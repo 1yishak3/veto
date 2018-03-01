@@ -1,0 +1,684 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var _jsxFileName = "/home/yitzhaq_m/react/flatApp2/src/screens/Settings/index.js";
+
+var _react = require("react");
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require("react-native");
+
+var _nativeBase = require("native-base");
+
+var _reactNativeEasyGrid = require("react-native-easy-grid");
+
+var _styles = require("./styles");
+
+var _styles2 = babelHelpers.interopRequireDefault(_styles);
+
+var Color = require("color");
+
+
+var headerLogo = require("../../../assets/header-logo.png");
+var primary = require("../../theme/variables/commonColor").brandPrimary;
+var light = Color(primary).alpha(0.3);
+
+var Settings = function (_Component) {
+  babelHelpers.inherits(Settings, _Component);
+
+  function Settings(props) {
+    babelHelpers.classCallCheck(this, Settings);
+
+    var _this = babelHelpers.possibleConstructorReturn(this, (Settings.__proto__ || Object.getPrototypeOf(Settings)).call(this, props));
+
+    _this.state = {
+      monSwitch: true,
+      tueSwitch: false,
+      wedSwitch: false,
+      thuSwitch: false,
+      friSwitch: false,
+      satSwitch: false,
+      sunSwitch: false,
+      Username: "",
+      email: "",
+      password: "",
+      offset: {
+        x: 0,
+        y: 0
+      }
+    };
+    return _this;
+  }
+
+  babelHelpers.createClass(Settings, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var navigation = this.props.navigation;
+      return _react2.default.createElement(
+        _nativeBase.Container,
+        {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 73
+          }
+        },
+        _react2.default.createElement(
+          _nativeBase.Header,
+          { hasTabs: true, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 74
+            }
+          },
+          _react2.default.createElement(
+            _nativeBase.Left,
+            {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 75
+              }
+            },
+            _react2.default.createElement(
+              _nativeBase.Button,
+              {
+                transparent: true,
+                onPress: function onPress() {
+                  return navigation.navigate("DrawerOpen");
+                },
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 76
+                }
+              },
+              _react2.default.createElement(_nativeBase.Icon, { active: true, name: "menu", __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 80
+                }
+              })
+            )
+          ),
+          _react2.default.createElement(
+            _nativeBase.Body,
+            {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 83
+              }
+            },
+            _react2.default.createElement(_reactNative.Image, { source: headerLogo, style: _styles2.default.imageHeader, __source: {
+                fileName: _jsxFileName,
+                lineNumber: 84
+              }
+            })
+          ),
+          _react2.default.createElement(_nativeBase.Right, {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 86
+            }
+          })
+        ),
+        _react2.default.createElement(
+          _nativeBase.Content,
+          { showsVerticalScrollIndicator: false, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 88
+            }
+          },
+          _react2.default.createElement(
+            _nativeBase.View,
+            {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 89
+              }
+            },
+            _react2.default.createElement(
+              _nativeBase.Text,
+              { style: _styles2.default.signupHeader, __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 90
+                }
+              },
+              "SETTINGS"
+            ),
+            _react2.default.createElement(
+              _nativeBase.View,
+              { style: _styles2.default.profileButtons, __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 91
+                }
+              },
+              _react2.default.createElement(
+                _nativeBase.Button,
+                { transparent: true, style: _styles2.default.roundedButton, __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 92
+                  }
+                },
+                _react2.default.createElement(_nativeBase.Icon, {
+                  name: "cloud-upload",
+                  style: _reactNative.Platform.OS === "android" ? { color: "#FFF", width: 23 } : { color: "#FFF", width: 22 },
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 93
+                  }
+                })
+              ),
+              _react2.default.createElement(
+                _reactNative.TouchableOpacity,
+                { style: { alignSelf: "center" }, __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 102
+                  }
+                },
+                _react2.default.createElement(_nativeBase.Thumbnail, {
+                  source: require("../../../assets/Contacts/sanket.png"),
+                  style: _styles2.default.profilePic,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 103
+                  }
+                })
+              ),
+              _react2.default.createElement(
+                _nativeBase.Button,
+                { transparent: true, style: _styles2.default.roundedButton, __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 108
+                  }
+                },
+                _react2.default.createElement(_nativeBase.Icon, {
+                  name: "cloud-download",
+                  style: _reactNative.Platform.OS === "android" ? { color: "#FFF", width: 23 } : { lineHeight: 0, color: "#FFF", width: 22 },
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 109
+                  }
+                })
+              )
+            )
+          ),
+          _react2.default.createElement(
+            _nativeBase.View,
+            { style: _styles2.default.bg, __source: {
+                fileName: _jsxFileName,
+                lineNumber: 121
+              }
+            },
+            _react2.default.createElement(
+              _nativeBase.View,
+              { style: _styles2.default.signupContainer, __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 122
+                }
+              },
+              _react2.default.createElement(
+                _nativeBase.Item,
+                { rounded: true, style: _styles2.default.inputGrp, __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 123
+                  }
+                },
+                _react2.default.createElement(_nativeBase.Icon, { name: "ios-person-outline", __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 124
+                  }
+                }),
+                _react2.default.createElement(_nativeBase.Input, {
+                  placeholder: "Username",
+                  placeholderTextColor: "rgba(255,255,255,0.6)",
+                  style: _styles2.default.input,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 125
+                  }
+                })
+              ),
+              _react2.default.createElement(
+                _nativeBase.Item,
+                { rounded: true, style: _styles2.default.inputGrp, __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 131
+                  }
+                },
+                _react2.default.createElement(_nativeBase.Icon, { name: "ios-mail-open-outline", __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 132
+                  }
+                }),
+                _react2.default.createElement(_nativeBase.Input, {
+                  placeholder: "Email",
+                  placeholderTextColor: "rgba(255,255,255,0.6)",
+                  style: _styles2.default.input,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 133
+                  }
+                })
+              ),
+              _react2.default.createElement(
+                _nativeBase.Item,
+                { rounded: true, style: _styles2.default.inputGrp, __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 139
+                  }
+                },
+                _react2.default.createElement(_nativeBase.Icon, { name: "ios-unlock-outline", __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 140
+                  }
+                }),
+                _react2.default.createElement(_nativeBase.Input, {
+                  placeholder: "Password",
+                  placeholderTextColor: "rgba(255,255,255,0.6)",
+                  secureTextEntry: true,
+                  style: _styles2.default.input,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 141
+                  }
+                })
+              )
+            )
+          ),
+          _react2.default.createElement(
+            _nativeBase.View,
+            { style: _styles2.default.notificationSwitchContainer, __source: {
+                fileName: _jsxFileName,
+                lineNumber: 150
+              }
+            },
+            _react2.default.createElement(
+              _nativeBase.Text,
+              { style: _styles2.default.notificationHeader, __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 151
+                }
+              },
+              "EMAIL NOTIFICATIONS"
+            ),
+            _react2.default.createElement(
+              _nativeBase.View,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 152
+                }
+              },
+              _react2.default.createElement(
+                _reactNativeEasyGrid.Grid,
+                { style: _styles2.default.child, __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 153
+                  }
+                },
+                _react2.default.createElement(
+                  _reactNativeEasyGrid.Col,
+                  {
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 154
+                    }
+                  },
+                  _react2.default.createElement(
+                    _nativeBase.Text,
+                    {
+                      style: _reactNative.Platform.OS === "android" ? _styles2.default.aswitchText : _styles2.default.switchText,
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 155
+                      }
+                    },
+                    "Monday"
+                  )
+                ),
+                _react2.default.createElement(
+                  _reactNativeEasyGrid.Col,
+                  {
+                    style: _reactNative.Platform.OS === "android" ? _styles2.default.aswitchContainer : _styles2.default.switchContainer,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 165
+                    }
+                  },
+                  _react2.default.createElement(_reactNative.Switch, {
+                    onValueChange: function onValueChange(value) {
+                      return _this2.setState({ monSwitch: value });
+                    },
+                    onTintColor: light,
+                    style: _styles2.default.switch,
+                    thumbTintColor: primary,
+                    tintColor: primary,
+                    value: this.state.monSwitch,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 172
+                    }
+                  })
+                )
+              ),
+              _react2.default.createElement(
+                _reactNativeEasyGrid.Grid,
+                { style: _styles2.default.child, __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 182
+                  }
+                },
+                _react2.default.createElement(
+                  _reactNativeEasyGrid.Col,
+                  {
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 183
+                    }
+                  },
+                  _react2.default.createElement(
+                    _nativeBase.Text,
+                    {
+                      style: _reactNative.Platform.OS === "android" ? _styles2.default.aswitchText : _styles2.default.switchText,
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 184
+                      }
+                    },
+                    "Tuesday"
+                  )
+                ),
+                _react2.default.createElement(
+                  _reactNativeEasyGrid.Col,
+                  {
+                    style: _reactNative.Platform.OS === "android" ? _styles2.default.aswitchContainer : _styles2.default.switchContainer,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 194
+                    }
+                  },
+                  _react2.default.createElement(_reactNative.Switch, {
+                    onValueChange: function onValueChange(value) {
+                      return _this2.setState({ tueSwitch: value });
+                    },
+                    onTintColor: light,
+                    style: _styles2.default.switch,
+                    thumbTintColor: primary,
+                    tintColor: primary,
+                    value: this.state.tueSwitch,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 201
+                    }
+                  })
+                )
+              ),
+              _react2.default.createElement(
+                _reactNativeEasyGrid.Grid,
+                { style: _styles2.default.child, __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 211
+                  }
+                },
+                _react2.default.createElement(
+                  _reactNativeEasyGrid.Col,
+                  {
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 212
+                    }
+                  },
+                  _react2.default.createElement(
+                    _nativeBase.Text,
+                    {
+                      style: _reactNative.Platform.OS === "android" ? _styles2.default.aswitchText : _styles2.default.switchText,
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 213
+                      }
+                    },
+                    "Wednesday"
+                  )
+                ),
+                _react2.default.createElement(
+                  _reactNativeEasyGrid.Col,
+                  {
+                    style: _reactNative.Platform.OS === "android" ? _styles2.default.aswitchContainer : _styles2.default.switchContainer,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 223
+                    }
+                  },
+                  _react2.default.createElement(_reactNative.Switch, {
+                    onValueChange: function onValueChange(value) {
+                      return _this2.setState({ wedSwitch: value });
+                    },
+                    onTintColor: light,
+                    style: _styles2.default.switch,
+                    thumbTintColor: primary,
+                    tintColor: primary,
+                    value: this.state.wedSwitch,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 230
+                    }
+                  })
+                )
+              ),
+              _react2.default.createElement(
+                _reactNativeEasyGrid.Grid,
+                { style: _styles2.default.child, __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 240
+                  }
+                },
+                _react2.default.createElement(
+                  _reactNativeEasyGrid.Col,
+                  {
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 241
+                    }
+                  },
+                  _react2.default.createElement(
+                    _nativeBase.Text,
+                    {
+                      style: _reactNative.Platform.OS === "android" ? _styles2.default.aswitchText : _styles2.default.switchText,
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 242
+                      }
+                    },
+                    "Thursday"
+                  )
+                ),
+                _react2.default.createElement(
+                  _reactNativeEasyGrid.Col,
+                  {
+                    style: _reactNative.Platform.OS === "android" ? _styles2.default.aswitchContainer : _styles2.default.switchContainer,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 252
+                    }
+                  },
+                  _react2.default.createElement(_reactNative.Switch, {
+                    onValueChange: function onValueChange(value) {
+                      return _this2.setState({ thuSwitch: value });
+                    },
+                    onTintColor: light,
+                    style: _styles2.default.switch,
+                    thumbTintColor: primary,
+                    tintColor: primary,
+                    value: this.state.thuSwitch,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 259
+                    }
+                  })
+                )
+              ),
+              _react2.default.createElement(
+                _reactNativeEasyGrid.Grid,
+                { style: _styles2.default.child, __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 269
+                  }
+                },
+                _react2.default.createElement(
+                  _reactNativeEasyGrid.Col,
+                  {
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 270
+                    }
+                  },
+                  _react2.default.createElement(
+                    _nativeBase.Text,
+                    {
+                      style: _reactNative.Platform.OS === "android" ? _styles2.default.aswitchText : _styles2.default.switchText,
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 271
+                      }
+                    },
+                    "Friday"
+                  )
+                ),
+                _react2.default.createElement(
+                  _reactNativeEasyGrid.Col,
+                  {
+                    style: _reactNative.Platform.OS === "android" ? _styles2.default.aswitchContainer : _styles2.default.switchContainer,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 281
+                    }
+                  },
+                  _react2.default.createElement(_reactNative.Switch, {
+                    onValueChange: function onValueChange(value) {
+                      return _this2.setState({ friSwitch: value });
+                    },
+                    onTintColor: light,
+                    style: _styles2.default.switch,
+                    thumbTintColor: primary,
+                    tintColor: primary,
+                    value: this.state.friSwitch,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 288
+                    }
+                  })
+                )
+              ),
+              _react2.default.createElement(
+                _reactNativeEasyGrid.Grid,
+                { style: _styles2.default.child, __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 298
+                  }
+                },
+                _react2.default.createElement(
+                  _reactNativeEasyGrid.Col,
+                  {
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 299
+                    }
+                  },
+                  _react2.default.createElement(
+                    _nativeBase.Text,
+                    {
+                      style: _reactNative.Platform.OS === "android" ? _styles2.default.aswitchText : _styles2.default.switchText,
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 300
+                      }
+                    },
+                    "Saturday"
+                  )
+                ),
+                _react2.default.createElement(
+                  _reactNativeEasyGrid.Col,
+                  {
+                    style: _reactNative.Platform.OS === "android" ? _styles2.default.aswitchContainer : _styles2.default.switchContainer,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 310
+                    }
+                  },
+                  _react2.default.createElement(_reactNative.Switch, {
+                    onValueChange: function onValueChange(value) {
+                      return _this2.setState({ satSwitch: value });
+                    },
+                    onTintColor: light,
+                    style: _styles2.default.switch,
+                    thumbTintColor: primary,
+                    tintColor: primary,
+                    value: this.state.satSwitch,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 317
+                    }
+                  })
+                )
+              ),
+              _react2.default.createElement(
+                _reactNativeEasyGrid.Grid,
+                { style: _styles2.default.child, __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 327
+                  }
+                },
+                _react2.default.createElement(
+                  _reactNativeEasyGrid.Col,
+                  {
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 328
+                    }
+                  },
+                  _react2.default.createElement(
+                    _nativeBase.Text,
+                    {
+                      style: _reactNative.Platform.OS === "android" ? _styles2.default.aswitchText : _styles2.default.switchText,
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 329
+                      }
+                    },
+                    "Sunday"
+                  )
+                ),
+                _react2.default.createElement(
+                  _reactNativeEasyGrid.Col,
+                  {
+                    style: _reactNative.Platform.OS === "android" ? _styles2.default.aswitchContainer : _styles2.default.switchContainer,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 339
+                    }
+                  },
+                  _react2.default.createElement(_reactNative.Switch, {
+                    onValueChange: function onValueChange(value) {
+                      return _this2.setState({ sunSwitch: value });
+                    },
+                    onTintColor: light,
+                    style: _styles2.default.switch,
+                    thumbTintColor: primary,
+                    tintColor: primary,
+                    value: this.state.sunSwitch,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 346
+                    }
+                  })
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+  return Settings;
+}(_react.Component);
+
+exports.default = Settings;

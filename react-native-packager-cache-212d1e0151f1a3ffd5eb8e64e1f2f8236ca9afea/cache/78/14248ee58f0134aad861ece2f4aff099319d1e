@@ -1,0 +1,19 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactNative = require('react-native');
+
+exports.default = _reactNative.StyleSheet.create({
+  contentContainer: {
+    height: 200
+  },
+  pageIndicator: {
+    position: 'absolute',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    alignSelf: 'center',
+    backgroundColor: 'transparent'
+  }
+});

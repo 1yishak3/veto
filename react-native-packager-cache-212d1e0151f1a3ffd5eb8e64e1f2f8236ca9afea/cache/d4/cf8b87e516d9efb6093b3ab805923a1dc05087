@@ -1,0 +1,100 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.fieldPropTypes = exports.fieldMetaPropTypes = exports.fieldInputPropTypes = exports.formPropTypes = undefined;
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+var any = _propTypes2.default.any,
+    bool = _propTypes2.default.bool,
+    func = _propTypes2.default.func,
+    shape = _propTypes2.default.shape,
+    string = _propTypes2.default.string,
+    oneOfType = _propTypes2.default.oneOfType,
+    object = _propTypes2.default.object;
+var formPropTypes = exports.formPropTypes = {
+  anyTouched: bool.isRequired,
+  asyncValidating: oneOfType([bool, string]).isRequired,
+  dirty: bool.isRequired,
+  error: any,
+  form: string.isRequired,
+  invalid: bool.isRequired,
+  initialized: bool.isRequired,
+  initialValues: object,
+  pristine: bool.isRequired,
+  pure: bool.isRequired,
+  submitting: bool.isRequired,
+  submitFailed: bool.isRequired,
+  submitSucceeded: bool.isRequired,
+  valid: bool.isRequired,
+  warning: any,
+  array: shape({
+    insert: func.isRequired,
+    move: func.isRequired,
+    pop: func.isRequired,
+    push: func.isRequired,
+    remove: func.isRequired,
+    removeAll: func.isRequired,
+    shift: func.isRequired,
+    splice: func.isRequired,
+    swap: func.isRequired,
+    unshift: func.isRequired }),
+  asyncValidate: func.isRequired,
+  autofill: func.isRequired,
+  blur: func.isRequired,
+  change: func.isRequired,
+  clearAsyncError: func.isRequired,
+  destroy: func.isRequired,
+  dispatch: func.isRequired,
+  handleSubmit: func.isRequired,
+  initialize: func.isRequired,
+  reset: func.isRequired,
+  touch: func.isRequired,
+  submit: func.isRequired,
+  untouch: func.isRequired,
+  triggerSubmit: bool,
+  clearSubmit: func.isRequired };
+
+var fieldInputPropTypes = exports.fieldInputPropTypes = {
+  checked: bool,
+  name: string.isRequired,
+  onBlur: func.isRequired,
+  onChange: func.isRequired,
+  onDragStart: func.isRequired,
+  onDrop: func.isRequired,
+  onFocus: func.isRequired,
+  value: any
+};
+
+var fieldMetaPropTypes = exports.fieldMetaPropTypes = {
+  active: bool.isRequired,
+  asyncValidating: bool.isRequired,
+  autofilled: bool.isRequired,
+  dirty: bool.isRequired,
+  dispatch: func.isRequired,
+  error: string,
+  form: string.isRequired,
+  invalid: bool.isRequired,
+  pristine: bool.isRequired,
+  submitting: bool.isRequired,
+  submitFailed: bool.isRequired,
+  touched: bool.isRequired,
+  valid: bool.isRequired,
+  visited: bool.isRequired,
+  warning: string
+};
+
+var fieldPropTypes = exports.fieldPropTypes = {
+  input: shape(fieldInputPropTypes).isRequired,
+  meta: shape(fieldMetaPropTypes).isRequired
+};
+
+exports.default = formPropTypes;

@@ -1,0 +1,58 @@
+--- adb starting (pid 22579) ---
+adb I 02-17 19:23:44 22579 22579 main.cpp:57] Android Debug Bridge version 1.0.39
+adb I 02-17 19:23:44 22579 22579 main.cpp:57] Version 0.0.1-4500957
+adb I 02-17 19:23:44 22579 22579 main.cpp:57] Installed as /home/yitzhaq_m/Android/Sdk/platform-tools/adb
+adb I 02-17 19:23:44 22579 22579 main.cpp:57] 
+adb I 02-17 19:23:44 22579 22579 adb_auth_host.cpp:416] adb_auth_init...
+adb I 02-17 19:23:44 22579 22579 adb_auth_host.cpp:174] read_key_file '/home/yitzhaq_m/.android/adbkey'...
+adb I 02-17 19:23:44 22579 22579 adb_auth_host.cpp:391] adb_auth_inotify_init...
+adb I 02-17 19:23:44 22579 22579 adb_auth_host.cpp:467] Calling send_auth_response
+adb server killed by remote request
+--- adb starting (pid 22612) ---
+adb I 22612 22612 main.cpp:83] Android Debug Bridge version 1.0.36
+adb I 22612 22612 main.cpp:83] Revision 1:7.0.0+r33-2
+adb I 22612 22612 main.cpp:83] 
+adb server killed by remote request
+--- adb starting (pid 23091) ---
+adb I 02-17 19:26:35 23091 23091 main.cpp:57] Android Debug Bridge version 1.0.39
+adb I 02-17 19:26:35 23091 23091 main.cpp:57] Version 0.0.1-4500957
+adb I 02-17 19:26:35 23091 23091 main.cpp:57] Installed as /home/yitzhaq_m/Android/Sdk/platform-tools/adb
+adb I 02-17 19:26:35 23091 23091 main.cpp:57] 
+adb I 02-17 19:26:35 23091 23091 adb_auth_host.cpp:416] adb_auth_init...
+adb I 02-17 19:26:35 23091 23091 adb_auth_host.cpp:174] read_key_file '/home/yitzhaq_m/.android/adbkey'...
+adb I 02-17 19:26:35 23091 23091 adb_auth_host.cpp:391] adb_auth_inotify_init...
+adb I 02-17 19:26:35 23091 23091 adb_auth_host.cpp:467] Calling send_auth_response
+adb server killed by remote request
+--- adb starting (pid 23108) ---
+adb I 23108 23108 main.cpp:83] Android Debug Bridge version 1.0.36
+adb I 23108 23108 main.cpp:83] Revision 1:7.0.0+r33-2
+adb I 23108 23108 main.cpp:83] 
+--- adb starting (pid 27872) ---
+adb I 02-18 05:07:45 27872 27872 main.cpp:57] Android Debug Bridge version 1.0.39
+adb I 02-18 05:07:45 27872 27872 main.cpp:57] Version 0.0.1-4500957
+adb I 02-18 05:07:45 27872 27872 main.cpp:57] Installed as /home/yitzhaq_m/Android/Sdk/platform-tools/adb
+adb I 02-18 05:07:45 27872 27872 main.cpp:57] 
+adb I 02-18 05:07:45 27872 27872 adb_auth_host.cpp:416] adb_auth_init...
+adb I 02-18 05:07:45 27872 27872 adb_auth_host.cpp:174] read_key_file '/home/yitzhaq_m/.android/adbkey'...
+adb I 02-18 05:07:45 27872 27872 adb_auth_host.cpp:391] adb_auth_inotify_init...
+adb I 02-18 05:07:45 27872 27872 adb_auth_host.cpp:467] Calling send_auth_response
+adb server killed by remote request
+--- adb starting (pid 28165) ---
+adb I 28165 28165 main.cpp:83] Android Debug Bridge version 1.0.36
+adb I 28165 28165 main.cpp:83] Revision 1:7.0.0+r33-2
+adb I 28165 28165 main.cpp:83] 
+--- adb starting (pid 3428) ---
+adb I 02-18 05:11:34  3428  3428 main.cpp:57] Android Debug Bridge version 1.0.39
+adb I 02-18 05:11:34  3428  3428 main.cpp:57] Version 0.0.1-4500957
+adb I 02-18 05:11:34  3428  3428 main.cpp:57] Installed as /home/yitzhaq_m/Android/Sdk/platform-tools/adb
+adb I 02-18 05:11:34  3428  3428 main.cpp:57] 
+adb I 02-18 05:11:34  3428  3428 adb_auth_host.cpp:416] adb_auth_init...
+adb I 02-18 05:11:34  3428  3428 adb_auth_host.cpp:174] read_key_file '/home/yitzhaq_m/.android/adbkey'...
+adb I 02-18 05:11:34  3428  3428 adb_auth_host.cpp:391] adb_auth_inotify_init...
+adb I 02-18 05:11:34  3428  3428 adb_auth_host.cpp:467] Calling send_auth_response
+adb server killed by remote request
+--- adb starting (pid 3451) ---
+adb I  3451  3451 main.cpp:83] Android Debug Bridge version 1.0.36
+adb I  3451  3451 main.cpp:83] Revision 1:7.0.0+r33-2
+adb I  3451  3451 main.cpp:83] 
+adb server killed by remote request

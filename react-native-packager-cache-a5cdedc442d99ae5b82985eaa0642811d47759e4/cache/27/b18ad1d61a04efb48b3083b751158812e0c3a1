@@ -1,0 +1,77 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var _jsxFileName = "/home/yitzhaq_m/devfest/veto/src/boot/setup.js";
+
+var _react = require("react");
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactRedux = require("react-redux");
+
+var _nativeBase = require("native-base");
+
+var _App = require("../App");
+
+var _App2 = babelHelpers.interopRequireDefault(_App);
+
+var _configureStore = require("./configureStore");
+
+var _configureStore2 = babelHelpers.interopRequireDefault(_configureStore);
+
+var _components = require("../theme/components");
+
+var _components2 = babelHelpers.interopRequireDefault(_components);
+
+var _commonColor = require("../theme/variables/commonColor");
+
+var _commonColor2 = babelHelpers.interopRequireDefault(_commonColor);
+
+var Setup = function (_Component) {
+  babelHelpers.inherits(Setup, _Component);
+
+  function Setup() {
+    babelHelpers.classCallCheck(this, Setup);
+
+    var _this = babelHelpers.possibleConstructorReturn(this, (Setup.__proto__ || Object.getPrototypeOf(Setup)).call(this));
+
+    _this.state = {
+      isLoading: false,
+      store: (0, _configureStore2.default)(function () {
+        return _this.setState({ isLoading: false });
+      })
+    };
+    return _this;
+  }
+
+  babelHelpers.createClass(Setup, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        _nativeBase.StyleProvider,
+        { style: (0, _components2.default)(_commonColor2.default), __source: {
+            fileName: _jsxFileName,
+            lineNumber: 25
+          }
+        },
+        _react2.default.createElement(
+          _reactRedux.Provider,
+          { store: this.state.store, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 26
+            }
+          },
+          _react2.default.createElement(_App2.default, {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 27
+            }
+          })
+        )
+      );
+    }
+  }]);
+  return Setup;
+}(_react.Component);
+
+exports.default = Setup;

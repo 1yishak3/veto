@@ -1,0 +1,702 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var _jsxFileName = "/home/yitzhaq_m/react/flatApp2/src/screens/Home/index.js";
+
+var _react = require("react");
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require("react-native");
+
+var _reactRedux = require("react-redux");
+
+var _nativeBase = require("native-base");
+
+var _reactNativeEasyGrid = require("react-native-easy-grid");
+
+var _reactNativeCarouselView = require("react-native-carousel-view");
+
+var _reactNativeCarouselView2 = babelHelpers.interopRequireDefault(_reactNativeCarouselView);
+
+var _actions = require("../../actions");
+
+var _data = require("./data.json");
+
+var _data2 = babelHelpers.interopRequireDefault(_data);
+
+var _styles = require("./styles");
+
+var _styles2 = babelHelpers.interopRequireDefault(_styles);
+
+var deviceWidth = _reactNative.Dimensions.get("window").width;
+var headerLogo = require("../../../assets/header-logo.png");
+
+var Home = function (_Component) {
+  babelHelpers.inherits(Home, _Component);
+
+  function Home() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    babelHelpers.classCallCheck(this, Home);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = babelHelpers.possibleConstructorReturn(this, (_ref = Home.__proto__ || Object.getPrototypeOf(Home)).call.apply(_ref, [this].concat(args))), _this), _this._renderItem = function (_ref2) {
+      var item = _ref2.item;
+
+      return _react2.default.createElement(
+        _reactNative.TouchableOpacity,
+        {
+          style: { flexDirection: "row" },
+          onPress: function onPress() {
+            return _this.props.navigation.navigate("Story");
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 43
+          }
+        },
+        _react2.default.createElement(
+          _nativeBase.View,
+          { style: _styles2.default.newsContent, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 47
+            }
+          },
+          _react2.default.createElement(
+            _nativeBase.Text,
+            { numberOfLines: 2, style: _styles2.default.newsHeader, __source: {
+                fileName: _jsxFileName,
+                lineNumber: 48
+              }
+            },
+            item.headline
+          ),
+          _react2.default.createElement(
+            _reactNativeEasyGrid.Grid,
+            { style: _styles2.default.swiperContentBox, __source: {
+                fileName: _jsxFileName,
+                lineNumber: 51
+              }
+            },
+            _react2.default.createElement(
+              _reactNativeEasyGrid.Col,
+              { style: { flexDirection: "row" }, __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 52
+                }
+              },
+              _react2.default.createElement(
+                _nativeBase.Text,
+                { style: _styles2.default.newsLink, __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 53
+                  }
+                },
+                item.link
+              ),
+              _react2.default.createElement(_nativeBase.Icon, { name: "ios-time-outline", style: _styles2.default.timeIcon, __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 56
+                }
+              }),
+              _react2.default.createElement(
+                _nativeBase.Text,
+                { style: _styles2.default.newsLink, __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 57
+                  }
+                },
+                item.time
+              )
+            ),
+            _react2.default.createElement(
+              _reactNativeEasyGrid.Col,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 61
+                }
+              },
+              _react2.default.createElement(
+                _reactNative.TouchableOpacity,
+                {
+                  style: _styles2.default.newsTypeView,
+                  onPress: function onPress() {
+                    return _this.props.navigation.navigate("Channel");
+                  },
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 62
+                  }
+                },
+                _react2.default.createElement(
+                  _nativeBase.Text,
+                  { style: _styles2.default.newsTypeText, __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 66
+                    }
+                  },
+                  item.category
+                )
+              )
+            )
+          )
+        )
+      );
+    }, _temp), babelHelpers.possibleConstructorReturn(_this, _ret);
+  }
+
+  babelHelpers.createClass(Home, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchData(_data2.default);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      if (this.props.isLoading) {
+        return _react2.default.createElement(_nativeBase.Spinner, {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 78
+          }
+        });
+      } else {
+        return _react2.default.createElement(
+          _nativeBase.Container,
+          {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 81
+            }
+          },
+          _react2.default.createElement(
+            _nativeBase.Header,
+            {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 82
+              }
+            },
+            _react2.default.createElement(
+              _nativeBase.Left,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 83
+                }
+              },
+              _react2.default.createElement(
+                _nativeBase.Button,
+                {
+                  transparent: true,
+                  onPress: function onPress() {
+                    return _this2.props.navigation.navigate("DrawerOpen");
+                  },
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 84
+                  }
+                },
+                _react2.default.createElement(_nativeBase.Icon, { active: true, name: "menu", __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 88
+                  }
+                })
+              )
+            ),
+            _react2.default.createElement(
+              _nativeBase.Body,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 91
+                }
+              },
+              _react2.default.createElement(_reactNative.Image, { source: headerLogo, style: _styles2.default.imageHeader, __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 92
+                }
+              })
+            ),
+            _react2.default.createElement(_nativeBase.Right, {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 94
+              }
+            })
+          ),
+          _react2.default.createElement(
+            _nativeBase.Content,
+            {
+              showsVerticalScrollIndicator: false,
+              style: { backgroundColor: "#fff" },
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 96
+              }
+            },
+            _react2.default.createElement(
+              _nativeBase.View,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 100
+                }
+              },
+              _react2.default.createElement(
+                _nativeBase.View,
+                {
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 101
+                  }
+                },
+                _react2.default.createElement(
+                  _reactNativeCarouselView2.default,
+                  {
+                    width: deviceWidth,
+                    height: 330,
+                    indicatorAtBottom: true,
+                    indicatorSize: _reactNative.Platform.OS === "android" ? 15 : 10,
+                    indicatorColor: "#FFF",
+                    indicatorOffset: 10,
+                    animate: false,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 102
+                    }
+                  },
+                  _react2.default.createElement(
+                    _reactNative.View,
+                    {
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 111
+                      }
+                    },
+                    _react2.default.createElement(
+                      _reactNative.TouchableOpacity,
+                      {
+                        activeOpacity: 1,
+                        onPress: function onPress() {
+                          return _this2.props.navigation.navigate("Story");
+                        },
+                        style: _styles2.default.slide,
+                        __source: {
+                          fileName: _jsxFileName,
+                          lineNumber: 112
+                        }
+                      },
+                      _react2.default.createElement(
+                        _reactNative.Image,
+                        {
+                          style: _styles2.default.newsPoster,
+                          source: require("../../../assets/NewsIcons/1.jpg"),
+                          __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 117
+                          }
+                        },
+                        _react2.default.createElement(
+                          _nativeBase.View,
+                          { style: _styles2.default.swiperTextContent, __source: {
+                              fileName: _jsxFileName,
+                              lineNumber: 121
+                            }
+                          },
+                          _react2.default.createElement(
+                            _nativeBase.Text,
+                            {
+                              numberOfLines: 2,
+                              style: _styles2.default.newsPosterHeader,
+                              __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 122
+                              }
+                            },
+                            "Flat App is a style of interface design emphasizing minimal use of stylistic elements."
+                          ),
+                          _react2.default.createElement(
+                            _reactNativeEasyGrid.Grid,
+                            { style: _styles2.default.swiperContentBox, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 129
+                              }
+                            },
+                            _react2.default.createElement(
+                              _reactNativeEasyGrid.Col,
+                              { style: { flexDirection: "row" }, __source: {
+                                  fileName: _jsxFileName,
+                                  lineNumber: 130
+                                }
+                              },
+                              _react2.default.createElement(
+                                _nativeBase.Text,
+                                { style: _styles2.default.newsPosterLink, __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 131
+                                  }
+                                },
+                                "SPACE.com"
+                              ),
+                              _react2.default.createElement(_nativeBase.Icon, {
+                                name: "ios-time-outline",
+                                style: _styles2.default.timePosterIcon,
+                                __source: {
+                                  fileName: _jsxFileName,
+                                  lineNumber: 134
+                                }
+                              }),
+                              _react2.default.createElement(
+                                _nativeBase.Text,
+                                { style: _styles2.default.newsPosterLink, __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 138
+                                  }
+                                },
+                                "20m ago"
+                              )
+                            ),
+                            _react2.default.createElement(
+                              _reactNativeEasyGrid.Col,
+                              {
+                                __source: {
+                                  fileName: _jsxFileName,
+                                  lineNumber: 140
+                                }
+                              },
+                              _react2.default.createElement(
+                                _reactNative.TouchableOpacity,
+                                {
+                                  style: _styles2.default.newsPosterTypeView,
+                                  __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 141
+                                  }
+                                },
+                                _react2.default.createElement(
+                                  _nativeBase.Text,
+                                  {
+                                    style: _styles2.default.newsPosterTypeText,
+                                    onPress: function onPress() {
+                                      return _this2.props.navigation.navigate("Channel");
+                                    },
+                                    __source: {
+                                      fileName: _jsxFileName,
+                                      lineNumber: 144
+                                    }
+                                  },
+                                  "SCIENCE"
+                                )
+                              )
+                            )
+                          )
+                        )
+                      )
+                    )
+                  ),
+                  _react2.default.createElement(
+                    _reactNative.View,
+                    {
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 158
+                      }
+                    },
+                    _react2.default.createElement(
+                      _reactNative.TouchableOpacity,
+                      {
+                        activeOpacity: 1,
+                        onPress: function onPress() {
+                          return _this2.props.navigation.navigate("Story");
+                        },
+                        style: _styles2.default.slide,
+                        __source: {
+                          fileName: _jsxFileName,
+                          lineNumber: 159
+                        }
+                      },
+                      _react2.default.createElement(
+                        _reactNative.Image,
+                        {
+                          style: _styles2.default.newsPoster,
+                          source: require("../../../assets/NewsIcons/3.jpg"),
+                          __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 164
+                          }
+                        },
+                        _react2.default.createElement(
+                          _nativeBase.View,
+                          { style: _styles2.default.swiperTextContent, __source: {
+                              fileName: _jsxFileName,
+                              lineNumber: 168
+                            }
+                          },
+                          _react2.default.createElement(
+                            _nativeBase.Text,
+                            {
+                              numberOfLines: 2,
+                              style: _styles2.default.newsPosterHeader,
+                              __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 169
+                              }
+                            },
+                            "So that the applications are able to load faster and resize easily."
+                          ),
+                          _react2.default.createElement(
+                            _reactNativeEasyGrid.Grid,
+                            { style: _styles2.default.swiperContentBox, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 176
+                              }
+                            },
+                            _react2.default.createElement(
+                              _reactNativeEasyGrid.Col,
+                              { style: { flexDirection: "row" }, __source: {
+                                  fileName: _jsxFileName,
+                                  lineNumber: 177
+                                }
+                              },
+                              _react2.default.createElement(
+                                _nativeBase.Text,
+                                { style: _styles2.default.newsPosterLink, __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 178
+                                  }
+                                },
+                                "CDC"
+                              ),
+                              _react2.default.createElement(_nativeBase.Icon, {
+                                name: "ios-time-outline",
+                                style: _styles2.default.timePosterIcon,
+                                __source: {
+                                  fileName: _jsxFileName,
+                                  lineNumber: 179
+                                }
+                              }),
+                              _react2.default.createElement(
+                                _nativeBase.Text,
+                                { style: _styles2.default.newsPosterLink, __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 183
+                                  }
+                                },
+                                "2hr ago"
+                              )
+                            ),
+                            _react2.default.createElement(
+                              _reactNativeEasyGrid.Col,
+                              {
+                                __source: {
+                                  fileName: _jsxFileName,
+                                  lineNumber: 185
+                                }
+                              },
+                              _react2.default.createElement(
+                                _reactNative.TouchableOpacity,
+                                {
+                                  style: _styles2.default.newsPosterTypeView,
+                                  __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 186
+                                  }
+                                },
+                                _react2.default.createElement(
+                                  _nativeBase.Text,
+                                  {
+                                    style: _styles2.default.newsPosterTypeText,
+                                    onPress: function onPress() {
+                                      return _this2.props.navigation.navigate("Channel");
+                                    },
+                                    __source: {
+                                      fileName: _jsxFileName,
+                                      lineNumber: 189
+                                    }
+                                  },
+                                  "ENVIRONMENT"
+                                )
+                              )
+                            )
+                          )
+                        )
+                      )
+                    )
+                  ),
+                  _react2.default.createElement(
+                    _reactNative.View,
+                    {
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 203
+                      }
+                    },
+                    _react2.default.createElement(
+                      _reactNative.TouchableOpacity,
+                      {
+                        activeOpacity: 1,
+                        onPress: function onPress() {
+                          return _this2.props.navigation.navigate("Story");
+                        },
+                        style: _styles2.default.slide,
+                        __source: {
+                          fileName: _jsxFileName,
+                          lineNumber: 204
+                        }
+                      },
+                      _react2.default.createElement(
+                        _reactNative.Image,
+                        {
+                          style: _styles2.default.newsPoster,
+                          source: require("../../../assets/NewsIcons/4.jpg"),
+                          __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 209
+                          }
+                        },
+                        _react2.default.createElement(
+                          _nativeBase.View,
+                          { style: _styles2.default.swiperTextContent, __source: {
+                              fileName: _jsxFileName,
+                              lineNumber: 213
+                            }
+                          },
+                          _react2.default.createElement(
+                            _nativeBase.Text,
+                            {
+                              numberOfLines: 2,
+                              style: _styles2.default.newsPosterHeader,
+                              __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 214
+                              }
+                            },
+                            "But still look sharp on high-definition screens."
+                          ),
+                          _react2.default.createElement(
+                            _reactNativeEasyGrid.Grid,
+                            { style: _styles2.default.swiperContentBox, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 220
+                              }
+                            },
+                            _react2.default.createElement(
+                              _reactNativeEasyGrid.Col,
+                              { style: { flexDirection: "row" }, __source: {
+                                  fileName: _jsxFileName,
+                                  lineNumber: 221
+                                }
+                              },
+                              _react2.default.createElement(
+                                _nativeBase.Text,
+                                { style: _styles2.default.newsPosterLink, __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 222
+                                  }
+                                },
+                                "SKY.com"
+                              ),
+                              _react2.default.createElement(_nativeBase.Icon, {
+                                name: "ios-time-outline",
+                                style: _styles2.default.timePosterIcon,
+                                __source: {
+                                  fileName: _jsxFileName,
+                                  lineNumber: 223
+                                }
+                              }),
+                              _react2.default.createElement(
+                                _nativeBase.Text,
+                                { style: _styles2.default.newsPosterLink, __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 227
+                                  }
+                                },
+                                "1day ago"
+                              )
+                            ),
+                            _react2.default.createElement(
+                              _reactNativeEasyGrid.Col,
+                              {
+                                __source: {
+                                  fileName: _jsxFileName,
+                                  lineNumber: 231
+                                }
+                              },
+                              _react2.default.createElement(
+                                _reactNative.TouchableOpacity,
+                                {
+                                  style: _styles2.default.newsPosterTypeView,
+                                  __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 232
+                                  }
+                                },
+                                _react2.default.createElement(
+                                  _nativeBase.Text,
+                                  {
+                                    style: _styles2.default.newsPosterTypeText,
+                                    onPress: function onPress() {
+                                      return _this2.props.navigation.navigate("Channel");
+                                    },
+                                    __source: {
+                                      fileName: _jsxFileName,
+                                      lineNumber: 235
+                                    }
+                                  },
+                                  "WORLD"
+                                )
+                              )
+                            )
+                          )
+                        )
+                      )
+                    )
+                  )
+                )
+              )
+            ),
+            _react2.default.createElement(_reactNative.FlatList, {
+              data: this.props.items,
+              renderItem: this._renderItem,
+              keyExtractor: function keyExtractor(item) {
+                return item.id;
+              },
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 253
+              }
+            })
+          )
+        );
+      }
+    }
+  }]);
+  return Home;
+}(_react.Component);
+
+function bindAction(dispatch) {
+  return {
+    fetchData: function fetchData(url) {
+      return dispatch((0, _actions.itemsFetchData)(url));
+    }
+  };
+}
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    items: state.homeReducer.items,
+    hasErrored: state.homeReducer.hasErrored,
+    isLoading: state.homeReducer.isLoading
+  };
+};
+exports.default = (0, _reactRedux.connect)(mapStateToProps, bindAction)(Home);

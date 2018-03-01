@@ -1,0 +1,280 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var _jsxFileName = "/home/yitzhaq_m/devfest/veto/src/screens/ForgotPassword/index.js";
+
+var _react = require("react");
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require("react-native");
+
+var _nativeBase = require("native-base");
+
+var _reduxForm = require("redux-form");
+
+var _styles = require("./styles");
+
+var _styles2 = babelHelpers.interopRequireDefault(_styles);
+
+var required = function required(value) {
+  return value ? undefined : "Required";
+};
+var email = function email(value) {
+  return value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value) ? "Invalid email address" : undefined;
+};
+
+var ForgotPasswordForm = function (_Component) {
+  babelHelpers.inherits(ForgotPasswordForm, _Component);
+
+  function ForgotPasswordForm(props) {
+    babelHelpers.classCallCheck(this, ForgotPasswordForm);
+
+    var _this = babelHelpers.possibleConstructorReturn(this, (ForgotPasswordForm.__proto__ || Object.getPrototypeOf(ForgotPasswordForm)).call(this, props));
+
+    _this.state = {
+      offset: {
+        x: 0,
+        y: 0
+      },
+      name: ""
+    };
+    return _this;
+  }
+
+  babelHelpers.createClass(ForgotPasswordForm, [{
+    key: "renderInput",
+    value: function renderInput(_ref) {
+      var _this2 = this;
+
+      var input = _ref.input,
+          label = _ref.label,
+          type = _ref.type,
+          _ref$meta = _ref.meta,
+          touched = _ref$meta.touched,
+          error = _ref$meta.error,
+          warning = _ref$meta.warning;
+
+      return _react2.default.createElement(
+        _nativeBase.View,
+        {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 50
+          }
+        },
+        _react2.default.createElement(
+          _nativeBase.Item,
+          { error: error && touched, rounded: true, style: _styles2.default.inputGrp, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 51
+            }
+          },
+          _react2.default.createElement(_nativeBase.Icon, { active: true, name: "mail", style: { color: "#fff" }, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 52
+            }
+          }),
+          _react2.default.createElement(_nativeBase.Input, babelHelpers.extends({
+            placeholderTextColor: "#FFF",
+            style: _styles2.default.input,
+            placeholder: "Email"
+          }, input, {
+            ref: function ref(c) {
+              return _this2.textInput = c;
+            },
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 53
+            }
+          })),
+          touched && error ? _react2.default.createElement(_nativeBase.Icon, {
+            active: true,
+            style: _styles2.default.formErrorIcon,
+            onPress: function onPress() {
+              return _this2.textInput._root.clear();
+            },
+            name: "close",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 61
+            }
+          }) : _react2.default.createElement(_nativeBase.Text, {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 67
+            }
+          })
+        ),
+        touched && error ? _react2.default.createElement(
+          _nativeBase.Text,
+          { style: _styles2.default.formErrorText1, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 70
+            }
+          },
+          error
+        ) : _react2.default.createElement(
+          _nativeBase.Text,
+          { style: _styles2.default.formErrorText2, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 73
+            }
+          },
+          "error here"
+        )
+      );
+    }
+  }, {
+    key: "forgotPassword",
+    value: function forgotPassword() {
+      if (this.props.valid) {
+        this.props.navigation.goBack();
+      } else {
+        _nativeBase.Toast.show({
+          text: "Enter Valid Email",
+          duration: 2500,
+          position: "top",
+          textStyle: { textAlign: "center" }
+        });
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      return _react2.default.createElement(
+        _nativeBase.Container,
+        {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 93
+          }
+        },
+        _react2.default.createElement(_reactNative.StatusBar, { barStyle: "light-content", __source: {
+            fileName: _jsxFileName,
+            lineNumber: 94
+          }
+        }),
+        _react2.default.createElement(
+          _reactNative.Image,
+          {
+            source: require("../../../assets/bg-signup.png"),
+            style: _styles2.default.background,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 95
+            }
+          },
+          _react2.default.createElement(
+            _nativeBase.Content,
+            { contentOffset: this.state.offset, __source: {
+                fileName: _jsxFileName,
+                lineNumber: 99
+              }
+            },
+            _react2.default.createElement(
+              _nativeBase.Content,
+              { padder: true, scrollEnabled: false, __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 100
+                }
+              },
+              _react2.default.createElement(
+                _nativeBase.Text,
+                { style: _styles2.default.forgotPasswordHeader, __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 101
+                  }
+                },
+                "Forgot Your Password?"
+              ),
+              _react2.default.createElement(
+                _nativeBase.View,
+                { style: _styles2.default.forgotPasswordContainer, __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 104
+                  }
+                },
+                _react2.default.createElement(_reduxForm.Field, {
+                  name: "email",
+                  component: this.renderInput,
+                  type: "email",
+                  validate: [email, required],
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 105
+                  }
+                }),
+                _react2.default.createElement(
+                  _nativeBase.Button,
+                  {
+                    rounded: true,
+                    block: true,
+                    bordered: true,
+                    onPress: function onPress() {
+                      return _this3.forgotPassword();
+                    },
+                    style: _styles2.default.emailBtn,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 112
+                    }
+                  },
+                  _react2.default.createElement(
+                    _nativeBase.Text,
+                    { style: { color: "#FFF" }, __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 119
+                      }
+                    },
+                    "Send Email"
+                  )
+                )
+              )
+            )
+          ),
+          _react2.default.createElement(
+            _nativeBase.Footer,
+            {
+              style: {
+                paddingLeft: 20,
+                paddingRight: 20
+              },
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 124
+              }
+            },
+            _react2.default.createElement(
+              _nativeBase.Button,
+              { transparent: true, onPress: function onPress() {
+                  return _this3.props.navigation.goBack();
+                }, __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 130
+                }
+              },
+              _react2.default.createElement(
+                _nativeBase.Text,
+                { style: _styles2.default.helpBtns, __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 131
+                  }
+                },
+                "Back To Login"
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+  return ForgotPasswordForm;
+}(_react.Component);
+
+var ForgotPassword = (0, _reduxForm.reduxForm)({
+  form: "help"
+})(ForgotPasswordForm);
+exports.default = ForgotPassword;

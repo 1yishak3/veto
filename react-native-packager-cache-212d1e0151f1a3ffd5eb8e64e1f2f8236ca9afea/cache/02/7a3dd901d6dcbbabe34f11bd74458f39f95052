@@ -1,0 +1,38 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var _jsxFileName = "/home/yitzhaq_m/react/flatApp2/src/components/ProgressBar/ProgressBar.android.js";
+
+var _react = require("react");
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require("react-native");
+
+var SpinnerNB = function (_Component) {
+  babelHelpers.inherits(SpinnerNB, _Component);
+
+  function SpinnerNB() {
+    babelHelpers.classCallCheck(this, SpinnerNB);
+    return babelHelpers.possibleConstructorReturn(this, (SpinnerNB.__proto__ || Object.getPrototypeOf(SpinnerNB)).apply(this, arguments));
+  }
+
+  babelHelpers.createClass(SpinnerNB, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(_reactNative.ProgressBarAndroid, babelHelpers.extends({}, this.props, {
+        styleAttr: "Horizontal",
+        indeterminate: false,
+        progress: this.props.progress ? this.props.progress / 100 : 0.5,
+        color: this.props.color ? this.props.color : "#FFF",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 8
+        }
+      }));
+    }
+  }]);
+  return SpinnerNB;
+}(_react.Component);
+
+exports.default = SpinnerNB;

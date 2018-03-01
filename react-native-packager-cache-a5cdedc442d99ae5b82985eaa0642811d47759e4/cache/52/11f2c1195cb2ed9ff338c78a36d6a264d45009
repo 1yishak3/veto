@@ -1,0 +1,169 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var _jsxFileName = "/home/yitzhaq_m/devfest/veto/src/screens/Comments/tabTwo.js";
+
+var _react = require("react");
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require("react-native");
+
+var _reactRedux = require("react-redux");
+
+var _nativeBase = require("native-base");
+
+var _data = require("./data");
+
+var _data2 = babelHelpers.interopRequireDefault(_data);
+
+var _style = require("./style");
+
+var _style2 = babelHelpers.interopRequireDefault(_style);
+
+var TabTwo = function (_Component) {
+  babelHelpers.inherits(TabTwo, _Component);
+
+  function TabTwo() {
+    babelHelpers.classCallCheck(this, TabTwo);
+    return babelHelpers.possibleConstructorReturn(this, (TabTwo.__proto__ || Object.getPrototypeOf(TabTwo)).apply(this, arguments));
+  }
+
+  babelHelpers.createClass(TabTwo, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        _nativeBase.Container,
+        { style: { backgroundColor: "#FFF" }, __source: {
+            fileName: _jsxFileName,
+            lineNumber: 24
+          }
+        },
+        _react2.default.createElement(
+          _nativeBase.Content,
+          { showsVerticalScrollIndicator: false, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 25
+            }
+          },
+          _react2.default.createElement(
+            _nativeBase.View,
+            { style: { backgroundColor: "#FFF" }, __source: {
+                fileName: _jsxFileName,
+                lineNumber: 26
+              }
+            },
+            _react2.default.createElement(_nativeBase.List, {
+              dataArray: _data2.default,
+              renderRow: function renderRow(data) {
+                return _react2.default.createElement(
+                  _nativeBase.Card,
+                  { style: _style2.default.card, __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 30
+                    }
+                  },
+                  _react2.default.createElement(
+                    _nativeBase.CardItem,
+                    { style: _style2.default.cardHeader, header: true, __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 31
+                      }
+                    },
+                    _react2.default.createElement(_nativeBase.Thumbnail, {
+                      small: true,
+                      source: data.image,
+                      style: _reactNative.Platform.OS === "android" ? { borderRadius: 40, alignSelf: "flex-start" } : { alignSelf: "flex-start" },
+                      __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 32
+                      }
+                    }),
+                    _react2.default.createElement(
+                      _nativeBase.View,
+                      {
+                        __source: {
+                          fileName: _jsxFileName,
+                          lineNumber: 41
+                        }
+                      },
+                      _react2.default.createElement(
+                        _nativeBase.Text,
+                        { style: _style2.default.commentName, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 42
+                          }
+                        },
+                        data.name
+                      ),
+                      _react2.default.createElement(
+                        _nativeBase.Text,
+                        { style: _style2.default.commentText, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 45
+                          }
+                        },
+                        data.comment
+                      ),
+                      _react2.default.createElement(
+                        _nativeBase.View,
+                        { style: _style2.default.commentDateView, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 48
+                          }
+                        },
+                        _react2.default.createElement(_nativeBase.Icon, { name: "ios-time-outline", style: _style2.default.timeIcon, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 49
+                          }
+                        }),
+                        _react2.default.createElement(
+                          _nativeBase.Text,
+                          { style: _style2.default.date, __source: {
+                              fileName: _jsxFileName,
+                              lineNumber: 50
+                            }
+                          },
+                          data.time
+                        )
+                      )
+                    ),
+                    _react2.default.createElement(
+                      _reactNative.TouchableOpacity,
+                      { style: _style2.default.commentLikeView, __source: {
+                          fileName: _jsxFileName,
+                          lineNumber: 55
+                        }
+                      },
+                      _react2.default.createElement(_nativeBase.Icon, { name: "ios-heart-outline", style: _style2.default.likeIcon, __source: {
+                          fileName: _jsxFileName,
+                          lineNumber: 56
+                        }
+                      }),
+                      _react2.default.createElement(
+                        _nativeBase.Text,
+                        { style: _style2.default.date, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 57
+                          }
+                        },
+                        data.likes
+                      )
+                    )
+                  )
+                );
+              },
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 27
+              }
+            })
+          )
+        )
+      );
+    }
+  }]);
+  return TabTwo;
+}(_react.Component);
+
+exports.default = (0, _reactRedux.connect)()(TabTwo);
