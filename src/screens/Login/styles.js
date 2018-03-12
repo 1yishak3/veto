@@ -9,7 +9,7 @@ export default {
     flex: 1,
     width: null,
     height: deviceHeight,
-    backgroundColor: "rgba(0,0,0,0.1)"
+    backgroundColor: commonColor.brandPrimary
   },
   container: {
     flex: 1,

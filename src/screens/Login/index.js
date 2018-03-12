@@ -95,10 +95,10 @@ class LoginForm extends Component {
     return (
       <Container>
         <StatusBar barStyle="light-content" />
-        <Image source={bg} style={styles.background}>
-          <Content contentContainerStyle={{ flex: 1 }}>
+
+          <Content contentContainerStyle={{ flex: 1, backgroundColor:"#50128d" }}>
             <View style={styles.container}>
-              <Image source={logo} style={styles.logo} />
+
             </View>
             <View style={styles.container}>
               <View style={styles.form}>
@@ -179,7 +179,7 @@ class LoginForm extends Component {
               </View>
             </View>
           </Content>
-        </Image>
+
       </Container>
     );
   }

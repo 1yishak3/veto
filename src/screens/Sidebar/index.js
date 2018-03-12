@@ -24,10 +24,7 @@ class SideBar extends Component {
     const navigation = this.props.navigation;
     return (
       <Container>
-        <Image
-          source={require("../../../assets/sidebar-transparent.png")}
-          style={styles.background}
-        >
+
           <Content style={styles.drawerContent}>
             <ListItem
               button
@@ -121,41 +118,41 @@ class SideBar extends Component {
           <View style={styles.logoutContainer}>
             <View style={styles.logoutbtn} foregroundColor={"white"}>
               <Grid>
-                <Col>
-                  <TouchableOpacity
-                    onPress={() => {
-                      navigation.dispatch(resetAction);
-                    }}
-                    style={{
-                      alignSelf: "flex-start",
-                      backgroundColor: "transparent"
-                    }}
-                  >
-                    <Text style={{ fontWeight: "bold", color: "#fff" }}>
-                      LOG OUT
-                    </Text>
-                    <Text note style={{ color: "#fff" }}>
-                      Kumar Sanket
-                    </Text>
-                  </TouchableOpacity>
-                </Col>
-                <Col>
-                  <TouchableOpacity
-                    style={{ alignSelf: "flex-end" }}
-                    onPress={() => {
-                      navigation.navigate("Profile");
-                    }}
-                  >
-                    <Thumbnail
-                      source={require("../../../assets/Contacts/sanket.png")}
-                      style={styles.profilePic}
-                    />
-                  </TouchableOpacity>
-                </Col>
+                {/*<Col>*/}
+                  {/*<TouchableOpacity*/}
+                    {/*onPress={() => {*/}
+                      {/*navigation.dispatch(resetAction);*/}
+                    {/*}}*/}
+                    {/*style={{*/}
+                      {/*alignSelf: "flex-start",*/}
+                      {/*backgroundColor: "transparent"*/}
+                    {/*}}*/}
+                  {/*>*/}
+                    {/*<Text style={{ fontWeight: "bold", color: "#fff" }}>*/}
+                      {/*LOG OUT*/}
+                    {/*</Text>*/}
+                    {/*<Text note style={{ color: "#fff" }}>*/}
+                      {/*Kumar Sanket*/}
+                    {/*</Text>*/}
+                  {/*</TouchableOpacity>*/}
+                {/*</Col>*/}
+                {/*<Col>*/}
+                  {/*<TouchableOpacity*/}
+                    {/*style={{ alignSelf: "flex-end" }}*/}
+                    {/*onPress={() => {*/}
+                      {/*navigation.navigate("Profile");*/}
+                    {/*}}*/}
+                  {/*>*/}
+                    {/*<Thumbnail*/}
+                      {/*source={require("../../../assets/Contacts/sanket.png")}*/}
+                      {/*style={styles.profilePic}*/}
+                    {/*/>*/}
+                  {/*</TouchableOpacity>*/}
+                {/*</Col>*/}
               </Grid>
             </View>
           </View>
-        </Image>
+
       </Container>
     );
   }

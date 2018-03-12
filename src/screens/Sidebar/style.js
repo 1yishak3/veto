@@ -17,7 +17,8 @@ export default {
   },
   logoutContainer: {
     padding: 30,
-    paddingTop: 0
+    paddingTop: 0,
+      backgroundColor:"#50128d"
   },
   logoutbtn: {
     paddingTop: 30,
@@ -32,7 +33,8 @@ export default {
     backgroundColor: primary
   },
   drawerContent: {
-    paddingTop: Platform.OS === "android" ? 20 : 30
+    paddingTop: Platform.OS === "android" ? 20 : 30,
+      backgroundColor:"#50128d"
   },
   profilePic: {
     height: 40,

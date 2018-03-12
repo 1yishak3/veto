@@ -101,11 +101,8 @@ class SignUpForm extends Component {
           backgroundColor={commonColor.statusBarColor}
           barStyle="light-content"
         />
-        <Image
-          source={require("../../../assets/bg-signup.png")}
-          style={styles.background}
-        >
-          <Content padder>
+
+          <Content padder style={{backgroundColor:"#50128d"}}>
             <Text style={styles.signupHeader}>CREATE ACCOUNT</Text>
             <View style={styles.signupContainer}>
               <Field
@@ -142,7 +139,8 @@ class SignUpForm extends Component {
           <Footer
             style={{
               paddingLeft: 20,
-              paddingRight: 20
+              paddingRight: 20,
+                backgroundColor:"#50128d"
             }}
           >
             <Left style={{ flex: 2 }}>
@@ -160,7 +158,7 @@ class SignUpForm extends Component {
               </Button>
             </Right>
           </Footer>
-        </Image>
+
       </Container>
     );
   }

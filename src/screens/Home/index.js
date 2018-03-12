@@ -89,7 +89,7 @@ class Home extends Component {
               </Button>
             </Left>
             <Body>
-              <Image source={headerLogo} style={styles.imageHeader} />
+             
             </Body>
             <Right />
           </Header>

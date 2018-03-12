@@ -92,11 +92,8 @@ class ForgotPasswordForm extends Component {
     return (
       <Container>
         <StatusBar barStyle="light-content" />
-        <Image
-          source={require("../../../assets/bg-signup.png")}
-          style={styles.background}
-        >
-          <Content contentOffset={this.state.offset}>
+
+          <Content contentOffset={this.state.offset} style={{backgroundColor:"#50128d"}}>
             <Content padder scrollEnabled={false}>
               <Text style={styles.forgotPasswordHeader}>
                 Forgot Your Password?
@@ -124,14 +121,15 @@ class ForgotPasswordForm extends Component {
           <Footer
             style={{
               paddingLeft: 20,
-              paddingRight: 20
+              paddingRight: 20,
+                backgroundColor:"#50128d"
             }}
           >
             <Button transparent onPress={() => this.props.navigation.goBack()}>
               <Text style={styles.helpBtns}>Back To Login</Text>
             </Button>
           </Footer>
-        </Image>
+
       </Container>
     );
   }

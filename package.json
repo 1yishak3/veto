@@ -1,6 +1,6 @@
 {
-  "name": "StrapFlatApp",
-  "version": "8.1.0",
+  "name": "Veto",
+  "version": "0.1.0",
   "private": true,
   "devDependencies": {
     "babel-eslint": "7.2.3",

@@ -2,7 +2,7 @@ import color from "color";
 
 import { Platform, Dimensions, PixelRatio } from "react-native";
 
-const primary = "#01cca1";
+const primary = "#50128d";
 
 const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
@@ -98,13 +98,13 @@ module.exports = {
   },
 
   // Card
-  cardDefaultBg: "#fff",
+  cardDefaultBg: "#8563ff",
 
   // Color
   brandPrimary: primary,
-  brandSecondary: "#00c497",
+  brandSecondary: "#ffffff",
   brandInfo: "#62B1F6",
-  brandSuccess: "#5cb85c",
+  brandSuccess: "#b839a2",
   brandDanger: "#d9534f",
   brandWarning: "#f0ad4e",
   brandSidebar: "#252932",
