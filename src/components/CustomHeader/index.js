@@ -1,11 +1,9 @@
-// @flow
 import React, { Component } from "react";
 import { Image } from "react-native";
 import { Icon, Button, Left, Right, Body, Header } from "native-base";
 
 import styles from "./styles";
-
-const headerLogo = require("../../../assets/header-logo.png");
+// const headerLogo = require("../../../assets/header-logo.png");
 
 class CustomHeader extends Component {
   render() {

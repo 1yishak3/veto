@@ -1,161 +1,130 @@
-// @flow
-import React, { Component } from "react";
-import { Image, TouchableOpacity } from "react-native";
+import React, {Component} from "react";
+import {Image, TouchableOpacity,FlatList} from "react-native";
 
-import { NavigationActions } from "react-navigation";
+import {NavigationActions} from "react-navigation";
+import {connect} from "react-redux";
 import {
-  Container,
-  Content,
-  Text,
-  Icon,
-  ListItem,
-  Thumbnail,
-  View
+    Container,
+    Content,
+    Text,
+    Icon,
+    ListItem,
+    Thumbnail,
+    View,
+    Input,
+    Item
+
 } from "native-base";
-import { Grid, Col } from "react-native-easy-grid";
-
+//import {Grid, Col} from "react-native-easy-grid";
 import styles from "./style";
+import {filterOwnPolipeople} from "../../actions";
+
 const resetAction = NavigationActions.reset({
-  index: 0,
-  actions: [NavigationActions.navigate({ routeName: "Login" })]
+    index: 0,
+    actions: [NavigationActions.navigate({routeName: "Login"})]
 });
+
 class SideBar extends Component {
-  render() {
-    const navigation = this.props.navigation;
-    return (
-      <Container>
-
-          <Content style={styles.drawerContent}>
-            <ListItem
-              button
-              onPress={() => {
-                navigation.navigate("Home");
-              }}
-              iconLeft
-              style={styles.links}
-            >
-              <Icon name="ios-grid-outline" />
-              <Text style={styles.linkText}>NEWS</Text>
-            </ListItem>
-            <ListItem
-              button
-              onPress={() => {
-                navigation.navigate("Channels");
-              }}
-              iconLeft
-              style={styles.links}
-            >
-              <Icon name="ios-keypad-outline" />
-              <Text style={styles.linkText}>CHANNELS</Text>
-            </ListItem>
-            <ListItem
-              button
-              onPress={() => {
-                navigation.navigate("Overview");
-              }}
-              iconLeft
-              style={styles.links}
-            >
-              <Icon name="ios-stats" />
-              <Text style={styles.linkText}> OVERVIEW</Text>
-            </ListItem>
-            <ListItem
-              button
-              onPress={() => {
-                navigation.navigate("Calendar");
-              }}
-              iconLeft
-              style={styles.links}
-            >
-              <Icon name="ios-calendar-outline" />
-              <Text style={styles.linkText}>CALENDAR</Text>
-            </ListItem>
-            <ListItem
-              button
-              onPress={() => {
-                navigation.navigate("Timeline");
-              }}
-              iconLeft
-              style={styles.links}
-            >
-              <Icon name="ios-timer-outline" />
-              <Text style={styles.linkText}>TIMELINE</Text>
-            </ListItem>
-            <ListItem
-              button
-              onPress={() => {
-                navigation.navigate("Profile");
-              }}
-              iconLeft
-              style={styles.links}
-            >
-              <Icon name="ios-person-outline" />
-              <Text style={styles.linkText}> PROFILE</Text>
-            </ListItem>
-            <ListItem
-              button
-              onPress={() => {
-                navigation.navigate("Settings");
-              }}
-              iconLeft
-              style={styles.links}
-            >
-              <Icon name="ios-settings-outline" />
-              <Text style={styles.linkText}>SETTINGS</Text>
-            </ListItem>
-            <ListItem
-              button
-              onPress={() => {
-                navigation.navigate("Feedback");
-              }}
-              iconLeft
-              style={styles.links}
-            >
-              <Icon name="ios-paper-outline" />
-              <Text style={styles.linkText}>FEEDBACK</Text>
-            </ListItem>
-          </Content>
-          <View style={styles.logoutContainer}>
-            <View style={styles.logoutbtn} foregroundColor={"white"}>
-              <Grid>
-                {/*<Col>*/}
-                  {/*<TouchableOpacity*/}
-                    {/*onPress={() => {*/}
-                      {/*navigation.dispatch(resetAction);*/}
-                    {/*}}*/}
-                    {/*style={{*/}
-                      {/*alignSelf: "flex-start",*/}
-                      {/*backgroundColor: "transparent"*/}
-                    {/*}}*/}
-                  {/*>*/}
-                    {/*<Text style={{ fontWeight: "bold", color: "#fff" }}>*/}
-                      {/*LOG OUT*/}
-                    {/*</Text>*/}
-                    {/*<Text note style={{ color: "#fff" }}>*/}
-                      {/*Kumar Sanket*/}
-                    {/*</Text>*/}
-                  {/*</TouchableOpacity>*/}
-                {/*</Col>*/}
-                {/*<Col>*/}
-                  {/*<TouchableOpacity*/}
-                    {/*style={{ alignSelf: "flex-end" }}*/}
-                    {/*onPress={() => {*/}
-                      {/*navigation.navigate("Profile");*/}
-                    {/*}}*/}
-                  {/*>*/}
-                    {/*<Thumbnail*/}
-                      {/*source={require("../../../assets/Contacts/sanket.png")}*/}
-                      {/*style={styles.profilePic}*/}
-                    {/*/>*/}
-                  {/*</TouchableOpacity>*/}
-                {/*</Col>*/}
-              </Grid>
+    renderPerson=(person)=> {
+        return (
+            <View style={{
+                borderBottomWidth: 1,
+                borderBottomColor: "#fff",
+                backgroundColor:"#340679",
+                flexDirection:"column",
+                }}>
+                <View style={{paddingTop:13, paddingLeft:23}}>
+                    <TouchableOpacity style={{flexDirection:"row"}}>
+                        <Thumbnail style={{height:100, width:100, borderRadius:100, paddingLeft:13}} source={require("../../../assets/Contacts/sankha.png")}/>
+                        <Text style={{paddingLeft:13, paddingTop:28}}>
+                            User's Name Here
+                        </Text>
+                    </TouchableOpacity>
+                </View>
+                <View >
+                    <Text style={{padding:23}}>
+                        Bio Here
+                    </Text>
+                </View>
             </View>
-          </View>
+        )
+    }
+    renderSearch=()=>{
+        return (
+            <View searchBar style={{flex:3}}>
+                <Item style={{paddingLeft:23, paddingRight:23}}>
+                    <Icon name="ios-search"/>
+                    <Input placeholder={"Search Your Polipeople"} onChangeText={this.props.filter}/>
+                </Item>
+            </View>
+        )
+    }
 
-      </Container>
-    );
-  }
+
+    renderPoliperson= ({item})=>{
+        return (
+            <TouchableOpacity
+            >
+                <View style={styles.poliperson}>
+                   <Thumbnail source={require("../../../assets/Contacts/sanket.png")}
+                   style={styles.polipic}/>
+                    <Text style={styles.politext}>{item.name}</Text>
+                </View>
+            </TouchableOpacity>
+        )
+    }
+
+    render() {
+        const navigation = this.props.navigation;
+        return (
+            <Container >
+
+                <Content style={styles.drawerContent}>
+                    <View style={{flex:4}}>
+                        {this.renderPerson(this.props.profile)}
+                    </View>
+
+                        {this.renderSearch()}
+
+                    <View style={{paddingTop:13, flex:6}}>
+                        <FlatList
+
+                            data={this.props.filteredList}
+                            renderItem={this.renderPoliperson}
+                            keyExtractor={poliperson => poliperson.uid}
+                        />
+                    </View>
+                </Content>
+                <View style={styles.logoutContainer}>
+                    <View style={styles.logoutbtn} foregroundColor={"white"}>
+                        <TouchableOpacity style={{height:43,
+                            width:250,
+
+                            alignItems:"center",
+                            backgroundColor:"#ffffff",
+                            borderRadius:23}}>
+                            <Text style={{paddingTop:7, color:"#340679"}}>Add Polipeople</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+
+            </Container>
+        );
+    }
 }
 
-export default SideBar;
+function sideActions(dispatch) {
+    return {
+        filter: string => dispatch(filterOwnPolipeople(string))
+
+    };
+}
+
+const sideProps = state => ({
+    filteredList: state.sideRed.filteredList,
+    isLoading: state.sideRed.isLoading,
+    profile: state.settingsRed.profile
+});
+
+
+export default connect(sideProps, sideActions)(SideBar);

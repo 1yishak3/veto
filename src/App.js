@@ -1,5 +1,6 @@
 
 import React from "react";
+import {Dimensions} from "react-native";
 import { StackNavigator, DrawerNavigator } from "react-navigation";
 import { Root } from "native-base";
 import Login from "./screens/Login/";
@@ -32,6 +33,7 @@ const Drawer = DrawerNavigator(
   },
   {
     initialRouteName: "Home",
+    drawerWidth:(()=>(0.53 * Dimensions.get("window").width))(),
     contentComponent: props => <Sidebar {...props} />
   }
 );
