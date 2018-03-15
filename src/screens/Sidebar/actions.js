@@ -4,3 +4,9 @@ export function filterOwnPolipeople(str:string){
         param:str
     })
 }
+export function setProfileId(uid:string){
+    return({
+        type:"whichUid",
+        param:uid
+    })
+}

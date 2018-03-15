@@ -13,9 +13,8 @@ import {
     View,
     Input,
     Item
-
 } from "native-base";
-//import {Grid, Col} from "react-native-easy-grid";
+
 import styles from "./style";
 import {filterOwnPolipeople} from "../../actions";
 
@@ -25,6 +24,9 @@ const resetAction = NavigationActions.reset({
 });
 
 class SideBar extends Component {
+    goPoliperson=(uid:string)=>{
+        this.props.navigation.navigate("Profile")
+    }
     renderPerson=(person)=> {
         return (
             <View style={{
@@ -63,7 +65,7 @@ class SideBar extends Component {
 
     renderPoliperson= ({item})=>{
         return (
-            <TouchableOpacity
+            <TouchableOpacity onPress={()=>this.goPoliperson(item.uid)}
             >
                 <View style={styles.poliperson}>
                    <Thumbnail source={require("../../../assets/Contacts/sanket.png")}
@@ -88,7 +90,6 @@ class SideBar extends Component {
 
                     <View style={{paddingTop:13, flex:6}}>
                         <FlatList
-
                             data={this.props.filteredList}
                             renderItem={this.renderPoliperson}
                             keyExtractor={poliperson => poliperson.uid}

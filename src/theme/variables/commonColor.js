@@ -227,7 +227,7 @@ module.exports = {
   },
 
   // Spinner
-  defaultSpinnerColor: "#45D56E",
+  defaultSpinnerColor: primary,
   inverseSpinnerColor: "#1A191B",
 
   // Tabs

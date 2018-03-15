@@ -8,5 +8,10 @@ export {
 
 } from "../screens/Settings/actions"
 export {
-    filterOwnPolipeople
+    filterOwnPolipeople,
+    setProfileId
 } from "../screens/Sidebar/actions"
+
+export{
+    toggleQuestions,
+} from "../screens/Profile/actions"
