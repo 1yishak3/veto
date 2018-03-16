@@ -36,7 +36,7 @@ class SideBar extends Component {
                 flexDirection:"column",
                 }}>
                 <View style={{paddingTop:13, paddingLeft:23}}>
-                    <TouchableOpacity style={{flexDirection:"row"}}>
+                    <TouchableOpacity onPress={()=>this.props.navigation.navigate("Settings")} style={{flexDirection:"row"}}>
                         <Thumbnail style={{height:100, width:100, borderRadius:100, paddingLeft:13}} source={require("../../../assets/Contacts/sankha.png")}/>
                         <Text style={{paddingLeft:13, paddingTop:28}}>
                             User's Name Here

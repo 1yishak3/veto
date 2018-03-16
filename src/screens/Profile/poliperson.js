@@ -91,6 +91,9 @@ class Poliperson extends Component {
                 >
                     {this.props.seeProfile ?
                         <Content style={{height:this.props.seeProfile ? 0.73*Dimensions.get("window").height : 0,flex:9}}>
+                            <Content style={{paddingTop:7}}>
+                                <Text style={{textAlign:"center",color:"#000"}}>--No Bio Yet--</Text>
+                            </Content>
                             <ListItem>
                                 <Left>
                                     <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold", fontSize:23}}>Personal Details</Text>

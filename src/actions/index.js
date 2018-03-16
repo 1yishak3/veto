@@ -5,7 +5,7 @@ export {
     itemsFetchData
 } from "../screens/Home/actions";
 export {
-
+    update
 } from "../screens/Settings/actions"
 export {
     filterOwnPolipeople,

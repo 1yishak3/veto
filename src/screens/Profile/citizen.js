@@ -91,12 +91,9 @@ class Citizen extends Component {
                     >
                         {this.props.seeProfile ?
                             <Content style={{height:this.props.seeProfile ? 0.73*Dimensions.get("window").height : 0,flex:9}}>
-                                <ListItem style={{alignContent:"center", alignItems:"center"}}>
-                                    <Body >
-                                        <Text style={{color:"#000"}}>No Bio Yet</Text>
-                                    </Body>
-
-                                </ListItem>
+                                <Content style={{paddingTop:7}}>
+                                    <Text style={{textAlign:"center",color:"#000"}}>--No Bio Yet--</Text>
+                                </Content>
                                 <ListItem>
                                     <Left>
                                         <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold", fontSize:23}}>Personal Details</Text>
@@ -151,64 +148,19 @@ class Citizen extends Component {
                                         <Text style={{alignItems:"center", color:"#000"}}>any format</Text>
                                     </Right>
                                 </ListItem>
-                                <ListItem>
-                                    <Left>
-                                        <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold", fontSize:23}}>Verified Documents</Text>
-                                    </Left>
-                                </ListItem>
-                                <ListItem>
-                                    <Left>
-                                        <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Birth Certificate</Text>
-                                    </Left>
-                                    <Right>
-                                        <Text style={{alignItems:"center", color:"#000"}}>None</Text>
-                                    </Right>
-                                </ListItem>
-                                <ListItem>
-                                    <Left>
-                                        <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Tax Returns</Text>
-                                    </Left>
-                                    <Right>
-                                        <Text style={{alignItems:"center", color:"#000"}}>None</Text>
-                                    </Right>
-                                </ListItem>
-                                <ListItem>
-                                    <Left>
-                                        <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Degrees</Text>
-                                    </Left>
-                                    <Right>
-                                        <Text style={{alignItems:"center", color:"#000"}}>None</Text>
-                                    </Right>
-                                </ListItem>
-                                <ListItem>
-                                    <Left>
-                                        <Text bold style={{alignItems:"center", color:"#000",fontSize:23, fontWeight:"bold"}}>Other Documents</Text>
-                                    </Left>
-                                </ListItem>
                             </Content>
                             :
                             null
                         }
                         <View style={{bottom:this.props.seeProfile ? 0 : null,backgroundColor: "#fff", flex:1}}>
                             <Grid>
-                                    <Col style={{backgroundColor:"#840000"}}>
-                                        <TouchableOpacity onPress={this.props.toggleQuestionsOn}>
-                                            <View style={styles.linkTabs_header}>
-                                                <Text style={styles.linkTabs_tabCounts}>13</Text>
-                                                <Text  style={styles.linkTabs_tabName}>
-                                                    Unanswered
-                                                </Text>
-                                            </View>
-                                        </TouchableOpacity>
-                                    </Col>
-
 
                                     <Col style={{backgroundColor:"#000084"}}>
                                         <TouchableOpacity onPress={this.props.toggleQuestionsOn}>
                                             <View style={styles.linkTabs_header}>
                                                 <Text style={styles.linkTabs_tabCounts}>52</Text>
                                                 <Text style={styles.linkTabs_tabName}>
-                                                    Answered
+                                                    Questions
                                                 </Text>
                                             </View>
                                         </TouchableOpacity>
