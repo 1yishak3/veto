@@ -84,13 +84,13 @@ class Citizen extends Component {
                         </View>
                     </TouchableOpacity>
                 </View>
+                {this.props.seeProfile ?
+                    <Content
+                        showsVerticalScrollIndicator={false}
+                        style={{backgroundColor: "#fff",height:this.props.seeProfile ? 0.73*Dimensions.get("window").height : 0 }}
+                    >
 
-                <Content
-                    showsVerticalScrollIndicator={false}
-                    style={{backgroundColor: "#fff" }}
-                >
-                    {this.props.seeProfile ?
-                        <Content style={{height:this.props.seeProfile ? 0.73*Dimensions.get("window").height : 0,flex:9}}>
+                        <Content style={{height:this.props.seeProfile ? 0.73*Dimensions.get("window").height : 0}}>
                             <Content style={{paddingTop:7}}>
                                 <Text style={{textAlign:"center",color:"#000"}}>--No Bio Yet--</Text>
                             </Content>
@@ -105,7 +105,7 @@ class Citizen extends Component {
                                     <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Age</Text>
                                 </Left>
                                 <Right>
-                                    <Text style={{width:150,alignItems:"center", color:"#000"}}>34</Text>
+                                    <Text style={{alignItems:"center", color:"#000"}}>34</Text>
                                 </Right>
                             </ListItem>
                             <ListItem>
@@ -113,7 +113,7 @@ class Citizen extends Component {
                                     <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Pronouns</Text>
                                 </Left>
                                 <Right>
-                                    <Text style={{width:150,alignItems:"center", color:"#000"}}>He/Him/His</Text>
+                                    <Text style={{alignItems:"center", color:"#000"}}>He/Him/His</Text>
                                 </Right>
                             </ListItem>
                             <ListItem>
@@ -121,7 +121,7 @@ class Citizen extends Component {
                                     <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Marital Status</Text>
                                 </Left>
                                 <Right>
-                                    <Text style={{width:150,alignItems:"center", color:"#000"}}>Divorced</Text>
+                                    <Text style={{alignItems:"center", color:"#000"}}>Divorced</Text>
                                 </Right>
                             </ListItem>
                             <ListItem>
@@ -129,7 +129,7 @@ class Citizen extends Component {
                                     <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Education</Text>
                                 </Left>
                                 <Right>
-                                    <Text style={{width:150,alignItems:"center", color:"#000"}}>Columbia University</Text>
+                                    <Text style={{alignItems:"center", color:"#000"}}>Columbia University</Text>
                                 </Right>
                             </ListItem>
                             <ListItem>
@@ -137,7 +137,7 @@ class Citizen extends Component {
                                     <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Party</Text>
                                 </Left>
                                 <Right>
-                                    <Text style={{width:150,alignItems:"center", color:"#000"}}>Fucking Republican</Text>
+                                    <Text style={{alignItems:"center", color:"#000"}}>Fucking Republican</Text>
                                 </Right>
                             </ListItem>
                             <ListItem>
@@ -145,27 +145,20 @@ class Citizen extends Component {
                                     <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Contact</Text>
                                 </Left>
                                 <Right>
-                                    <Text style={{width:150,alignItems:"center", color:"#000"}}>any format</Text>
+                                    <Text style={{alignItems:"center", color:"#000"}}>any format</Text>
                                 </Right>
                             </ListItem>
                         </Content>
-                        :
-                        null
-                    }
 
-
-                    {/*{//this.props.seeProfile ? return <Text style={{color:"#000"}}>HEYYYYY</Text> : ()=>{return this.renderQuestions()}}*/}
-                    <View>
-                        {!this.props.seeProfile ? this.renderQuestions() : null}
-                    </View>
-                </Content>
+                    </Content>
+                    :
+                    null
+                }
                 <Footer style={{bottom:this.props.seeProfile ? 0 : null,backgroundColor: "#fff"}}>
                     <Grid>
-
                         <Col style={{backgroundColor:"#000084"}}>
                             <TouchableOpacity onPress={this.props.toggleQuestionsOn}>
                                 <View style={styles.linkTabs_header}>
-
                                     <Text style={styles.linkTabs_tabName}>
                                         Questions[52]
                                     </Text>
@@ -175,6 +168,14 @@ class Citizen extends Component {
 
                     </Grid>
                 </Footer>
+                {!this.props.seeProfile ?
+                    <Content style={{backgroundColor:"#fff"}}>
+                        <View>
+                            {this.renderQuestions() }
+                        </View>
+                    </Content>
+                    : null}
+
 
             </Container>
         );
@@ -184,7 +185,6 @@ class Citizen extends Component {
 function mapActions(dispatch){
     return {
         toggleQuestionsOn:()=>dispatch(toggleQuestions(false)),
-
         toggleQuestionsOff:()=>dispatch(toggleQuestions(true))
     }
 }
@@ -192,7 +192,7 @@ function mapActions(dispatch){
 const mapState = state=>({
     uid: state.profileRed.uid,
     data:state.profileRed.data,
-    seeProfile: state.profileRed.seeProfile
+    seeProfile: state.profileRed.seeProfile,
 })
 export default  connect(mapState, mapActions)(Citizen);
 

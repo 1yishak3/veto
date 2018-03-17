@@ -21,7 +21,7 @@ import styles from "./styles";
 import datas from "./data";
 import {toggleQuestions, update} from "../../actions";
 import {DocumentPicker, DocumentPickerUtil} from "react-native-document-picker"
-import FilePickerManager from "react-native-file-picker"
+import FS from "react-native-fs"
 type Props = {
     navigation: () => void
 };
@@ -29,7 +29,8 @@ class Settings extends Component {
     state: {
         listViewData: any,
         modal:false,
-        url:""
+        file:"",
+        uploaded:false
     };
     props: Props;
     ds: Object;
@@ -39,29 +40,28 @@ class Settings extends Component {
         this.state = {
             listViewData: datas,
             modal:false,
-            url:""
+            file:"",
+            uploaded:false
         };
     }
-    url=""
+
     getUri(){
-        const vary="ios"
-        if(false) {
-            DocumentPicker.show({
-                filetype: [DocumentPickerUtil.allFiles()]
-            }, (err, res) => {
-                console.log(err);
-                this.url = res
-                console.log(res)
-            })
+        DocumentPicker.show({
+            filetype: [DocumentPickerUtil.allFiles()]
+        }, (err, res) => {
+            console.log(err);
+            this.file = res
+            console.log(res)
+
             this.setState({
                 ...this.state,
-                url: this.url
+                file: this.file,
+                uploaded:true
             })
-        }else{
-            FilePickerManager.showFilePicker(null,(res)=>{
-                console.log(res)
-            })
-        }
+            //do something with the file upon save change
+        })
+
+
     }
     renderQuestions=()=>{
         if(this.ds.cloneWithRows(this.state.listViewData).getRowCount() === 0){
@@ -117,12 +117,12 @@ class Settings extends Component {
                         </View>
                     </TouchableOpacity>
                 </View>
+                {this.props.seeProfile ?
+                    <Content
+                        showsVerticalScrollIndicator={false}
+                        style={{backgroundColor: "#fff" }}
+                    >
 
-                <Content
-                    showsVerticalScrollIndicator={false}
-                    style={{backgroundColor: "#fff" }}
-                >
-                    {this.props.seeProfile ?
 
                         <Content style={{height:this.props.seeProfile ? 0.73*Dimensions.get("window").height : 0,flex:9}}>
 
@@ -262,7 +262,11 @@ class Settings extends Component {
                                                         }}>Other Documents</Text>
                                                     </Left>
                                                 </ListItem>
-                                                <Text>{this.state.url}</Text>
+                                                { this.state.uploaded ?<View >
+                                                <Text style={{color:"#000"}}>{this.state.file.fileName}</Text>
+                                                <Text style={{color:"#000"}}>{this.state.file.type}</Text>
+                                                        <Text style={{color:"#000"}}>{this.state.file.uri}</Text></View>
+                                                    :null}
                                                 {this.props.otherDocs ?
                                                     <FlatList
                                                         data={this.props.otherDocs}
@@ -289,30 +293,30 @@ class Settings extends Component {
                                     </View>
                                 </Content>
                                 <Footer>
-                                <Grid style={{bottom:0}}>
-                                    <Row>
-                                        <Col style={{backgroundColor:"#840000"}}>
-                                            <TouchableOpacity onPress={()=>this.renderModal(false)}>
-                                                <View style={styles.linkTabs_header}>
+                                    <Grid style={{bottom:0}}>
+                                        <Row>
+                                            <Col style={{backgroundColor:"#840000"}}>
+                                                <TouchableOpacity onPress={()=>this.renderModal(false)}>
+                                                    <View style={styles.linkTabs_header}>
 
-                                                    <Text  style={styles.linkTabs_tabName}>
-                                                        Cancel
-                                                    </Text>
-                                                </View>
-                                            </TouchableOpacity>
-                                        </Col>
-                                        <Col style={{backgroundColor:"#000084"}}>
-                                            <TouchableOpacity onPress={()=>this.renderModal(false)}>
-                                                <View style={styles.linkTabs_header}>
+                                                        <Text  style={styles.linkTabs_tabName}>
+                                                            Cancel
+                                                        </Text>
+                                                    </View>
+                                                </TouchableOpacity>
+                                            </Col>
+                                            <Col style={{backgroundColor:"#000084"}}>
+                                                <TouchableOpacity onPress={()=>this.renderModal(false)}>
+                                                    <View style={styles.linkTabs_header}>
 
-                                                    <Text style={styles.linkTabs_tabName}>
-                                                        Save Changes
-                                                    </Text>
-                                                </View>
-                                            </TouchableOpacity>
-                                        </Col>
-                                    </Row>
-                                </Grid>
+                                                        <Text style={styles.linkTabs_tabName}>
+                                                            Save Changes
+                                                        </Text>
+                                                    </View>
+                                                </TouchableOpacity>
+                                            </Col>
+                                        </Row>
+                                    </Grid>
                                 </Footer>
 
                             </Modal>
@@ -446,18 +450,13 @@ class Settings extends Component {
                                 </View>
                             </Button>
                         </Content>
-                        :
-                        null
-                    }
 
 
-
-                    {/*{//this.props.seeProfile ? return <Text style={{color:"#000"}}>HEYYYYY</Text> : ()=>{return this.renderQuestions()}}*/}
-                    <View>
-                        {!this.props.seeProfile ? this.renderQuestions() : null}
-                    </View>
-                </Content>
-                <Footer style={{bottom:this.props.seeProfile ? 0 : null,backgroundColor: "#fff",  paddingTop:13}}>
+                    </Content>
+                    :
+                    null
+                }
+                <Footer style={{bottom:this.props.seeProfile ? 0 : null,backgroundColor: "#fff"}}>
                     <Grid>
                         {this.props.politician ?
                             <Row>
@@ -496,7 +495,13 @@ class Settings extends Component {
                         }
                     </Grid>
                 </Footer>
-
+                {!this.props.seeProfile ?
+                    <Content style={{backgroundColor:"#fff"}}>
+                        <View>
+                            {this.renderQuestions()}
+                        </View>
+                    </Content>
+                    : null}
             </Container>
         );
     }

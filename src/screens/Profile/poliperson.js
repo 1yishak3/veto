@@ -84,12 +84,12 @@ class Poliperson extends Component {
                         </View>
                     </TouchableOpacity>
                 </View>
+                {this.props.seeProfile ?
+                    <Content
+                        showsVerticalScrollIndicator={false}
+                        style={{backgroundColor: "#fff" }}
+                    >
 
-                <Content
-                    showsVerticalScrollIndicator={false}
-                    style={{backgroundColor: "#fff" }}
-                >
-                    {this.props.seeProfile ?
                         <Content style={{height:this.props.seeProfile ? 0.73*Dimensions.get("window").height : 0,flex:9}}>
                             <Content style={{paddingTop:7}}>
                                 <Text style={{textAlign:"center",color:"#000"}}>--No Bio Yet--</Text>
@@ -175,16 +175,12 @@ class Poliperson extends Component {
                                 </Left>
                             </ListItem>
                         </Content>
-                        :
-                        null
-                    }
 
 
-                    {/*{//this.props.seeProfile ? return <Text style={{color:"#000"}}>HEYYYYY</Text> : ()=>{return this.renderQuestions()}}*/}
-                    <View>
-                        {!this.props.seeProfile ? this.renderQuestions() : null}
-                    </View>
-                </Content>
+                    </Content>
+                    :
+                    null
+                }
                 <Footer style={{bottom:this.props.seeProfile ? 0 : null,backgroundColor: "#fff", flex:1}}>
                     <Grid>
                         <Col style={{backgroundColor:"#840000"}}>
@@ -211,6 +207,13 @@ class Poliperson extends Component {
 
                     </Grid>
                 </Footer>
+                {!this.props.seeProfile ?
+                    <Content style={{backgroundColor:"#fff"}}>
+                        <View>
+                            {this.renderQuestions()}
+                        </View>
+                    </Content>
+                    : null}
 
             </Container>
         );
