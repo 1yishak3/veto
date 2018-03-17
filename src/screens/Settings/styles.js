@@ -118,7 +118,7 @@ export default {
     profileInfoContainer: {
         backgroundColor: primary,
         paddingTop: 10,
-        height:"15%"
+        height:null
     },
     profileUser: {
         alignSelf: "center",
@@ -146,8 +146,7 @@ export default {
         backgroundColor: "#fff",
     },
     linkTabs_header: {
-        padding: 15,
-        paddingTop:23,
+        paddingTop:13,
         alignSelf: "center"
     },
     linkTabs_tabCounts: {

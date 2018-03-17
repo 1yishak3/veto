@@ -99,7 +99,7 @@ class SideBar extends Component {
                 <View style={styles.logoutContainer}>
                     <View style={styles.logoutbtn} foregroundColor={"white"}>
                         <TouchableOpacity style={{height:43,
-                            width:250,
+                            width:"75%",
 
                             alignItems:"center",
                             backgroundColor:"#ffffff",

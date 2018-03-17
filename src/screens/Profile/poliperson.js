@@ -55,7 +55,7 @@ class Poliperson extends Component {
             return (
                 <FlatList
                     data={datas}
-                    renderItem={({datum})=><Question answered="true"/>}
+                    renderItem={({datum})=><Card><Question answered="true"/></Card>}
                     keyExtractor={datum=>datum.id}
                 />
             )
@@ -105,7 +105,7 @@ class Poliperson extends Component {
                                     <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Age</Text>
                                 </Left>
                                 <Right>
-                                    <Text style={{alignItems:"center", color:"#000"}}>34</Text>
+                                    <Text style={{width:150,alignItems:"center", color:"#000"}}>34</Text>
                                 </Right>
                             </ListItem>
                             <ListItem>
@@ -113,7 +113,7 @@ class Poliperson extends Component {
                                     <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Pronouns</Text>
                                 </Left>
                                 <Right>
-                                    <Text style={{alignItems:"center", color:"#000"}}>he/him/his</Text>
+                                    <Text style={{width:150,alignItems:"center", color:"#000"}}>he/him/his</Text>
                                 </Right>
                             </ListItem>
                             <ListItem>
@@ -121,7 +121,7 @@ class Poliperson extends Component {
                                     <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Marital Status</Text>
                                 </Left>
                                 <Right>
-                                    <Text style={{alignItems:"center", color:"#000"}}>Divorced</Text>
+                                    <Text style={{width:150,alignItems:"center", color:"#000"}}>Divorced</Text>
                                 </Right>
                             </ListItem>
                             <ListItem>
@@ -129,7 +129,7 @@ class Poliperson extends Component {
                                     <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Education</Text>
                                 </Left>
                                 <Right>
-                                    <Text style={{alignItems:"center", color:"#000"}}>Columbia University</Text>
+                                    <Text style={{width:150,alignItems:"center", color:"#000"}}>Columbia University</Text>
                                 </Right>
                             </ListItem>
                             <ListItem>
@@ -137,7 +137,7 @@ class Poliperson extends Component {
                                     <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Contact</Text>
                                 </Left>
                                 <Right>
-                                    <Text style={{alignItems:"center", color:"#000"}}>any format</Text>
+                                    <Text style={{width:150,alignItems:"center", color:"#000"}}>any format</Text>
                                 </Right>
                             </ListItem>
                             <ListItem>
@@ -150,7 +150,7 @@ class Poliperson extends Component {
                                     <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Birth Certificate</Text>
                                 </Left>
                                 <Right>
-                                    <Text style={{alignItems:"center", color:"#000"}}>None</Text>
+                                    <Text style={{width:150,alignItems:"center", color:"#000"}}>None</Text>
                                 </Right>
                             </ListItem>
                             <ListItem>
@@ -158,7 +158,7 @@ class Poliperson extends Component {
                                     <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Tax Returns</Text>
                                 </Left>
                                 <Right>
-                                    <Text style={{alignItems:"center", color:"#000"}}>None</Text>
+                                    <Text style={{width:150,alignItems:"center", color:"#000"}}>None</Text>
                                 </Right>
                             </ListItem>
                             <ListItem>
@@ -166,7 +166,7 @@ class Poliperson extends Component {
                                     <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Degrees</Text>
                                 </Left>
                                 <Right>
-                                    <Text style={{alignItems:"center", color:"#000"}}>None</Text>
+                                    <Text style={{width:150,alignItems:"center", color:"#000"}}>None</Text>
                                 </Right>
                             </ListItem>
                             <ListItem>
@@ -178,39 +178,39 @@ class Poliperson extends Component {
                         :
                         null
                     }
-                    <View style={{bottom:this.props.seeProfile ? 0 : null,backgroundColor: "#fff", flex:1}}>
-                        <Grid>
-                            <Col style={{backgroundColor:"#840000"}}>
-                                <TouchableOpacity onPress={this.props.toggleQuestionsOn}>
-                                    <View style={styles.linkTabs_header}>
-                                        <Text style={styles.linkTabs_tabCounts}>13</Text>
-                                        <Text  style={styles.linkTabs_tabName}>
-                                            Unanswered
-                                        </Text>
-                                    </View>
-                                </TouchableOpacity>
-                            </Col>
 
-
-                            <Col style={{backgroundColor:"#000084"}}>
-                                <TouchableOpacity onPress={this.props.toggleQuestionsOn}>
-                                    <View style={styles.linkTabs_header}>
-                                        <Text style={styles.linkTabs_tabCounts}>52</Text>
-                                        <Text style={styles.linkTabs_tabName}>
-                                            Answered
-                                        </Text>
-                                    </View>
-                                </TouchableOpacity>
-                            </Col>
-
-                        </Grid>
-                    </View>
 
                     {/*{//this.props.seeProfile ? return <Text style={{color:"#000"}}>HEYYYYY</Text> : ()=>{return this.renderQuestions()}}*/}
                     <View>
                         {!this.props.seeProfile ? this.renderQuestions() : null}
                     </View>
                 </Content>
+                <Footer style={{bottom:this.props.seeProfile ? 0 : null,backgroundColor: "#fff", flex:1}}>
+                    <Grid>
+                        <Col style={{backgroundColor:"#840000"}}>
+                            <TouchableOpacity onPress={this.props.toggleQuestionsOn}>
+                                <View style={styles.linkTabs_header}>
+                                    <Text  style={styles.linkTabs_tabName}>
+                                        Unanswered [13]
+                                    </Text>
+                                </View>
+                            </TouchableOpacity>
+                        </Col>
+
+
+                        <Col style={{backgroundColor:"#000084"}}>
+                            <TouchableOpacity onPress={this.props.toggleQuestionsOn}>
+                                <View style={styles.linkTabs_header}>
+
+                                    <Text style={styles.linkTabs_tabName}>
+                                        Answered [52]
+                                    </Text>
+                                </View>
+                            </TouchableOpacity>
+                        </Col>
+
+                    </Grid>
+                </Footer>
 
             </Container>
         );

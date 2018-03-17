@@ -33,7 +33,7 @@ const Drawer = DrawerNavigator(
   },
   {
     initialRouteName: "Home",
-    drawerWidth:(()=>(0.53 * Dimensions.get("window").width))(),
+    drawerWidth:(()=>(0.83 * Dimensions.get("window").width))(),
     contentComponent: props => <Sidebar {...props} />
   }
 );

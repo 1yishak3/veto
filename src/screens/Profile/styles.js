@@ -13,7 +13,7 @@ export default {
     profileInfoContainer: {
         backgroundColor: primary,
         paddingTop: 10,
-        height:"15%"
+        height:null
     },
     profileUser: {
         alignSelf: "center",
@@ -28,8 +28,8 @@ export default {
         color: "#FFF"
     },
     profilePic: {
-        width: 80,
-        height: 80,
+        width: 75,
+        height: 75,
         borderRadius: 40
     },
     profileInfo: {

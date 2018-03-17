@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Platform } from "react";
 import { Image, TouchableOpacity, ListView, Dimensions, FlatList, Modal, TextInput} from "react-native";
 import {connect} from "react-redux"
 import {
@@ -11,7 +11,7 @@ import {
     ListItem,
     Button,
     Icon,
-    Left, Right, Footer,Input, Body
+    Left, Right, Footer,Input, Body, Card
 } from "native-base";
 import { Grid, Col, Row } from "react-native-easy-grid";
 import CustomHeader from "../../components/CustomHeader";
@@ -21,14 +21,15 @@ import styles from "./styles";
 import datas from "./data";
 import {toggleQuestions, update} from "../../actions";
 import {DocumentPicker, DocumentPickerUtil} from "react-native-document-picker"
-
+import FilePickerManager from "react-native-file-picker"
 type Props = {
     navigation: () => void
 };
 class Settings extends Component {
     state: {
         listViewData: any,
-        modal:false
+        modal:false,
+        url:""
     };
     props: Props;
     ds: Object;
@@ -37,11 +38,30 @@ class Settings extends Component {
         this.ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
         this.state = {
             listViewData: datas,
-            modal:false
+            modal:false,
+            url:""
         };
     }
+    url=""
     getUri(){
-        
+        const vary="ios"
+        if(false) {
+            DocumentPicker.show({
+                filetype: [DocumentPickerUtil.allFiles()]
+            }, (err, res) => {
+                console.log(err);
+                this.url = res
+                console.log(res)
+            })
+            this.setState({
+                ...this.state,
+                url: this.url
+            })
+        }else{
+            FilePickerManager.showFilePicker(null,(res)=>{
+                console.log(res)
+            })
+        }
     }
     renderQuestions=()=>{
         if(this.ds.cloneWithRows(this.state.listViewData).getRowCount() === 0){
@@ -60,7 +80,7 @@ class Settings extends Component {
             return (
                 <FlatList
                     data={datas}
-                    renderItem={({datum})=><Question answered="true"/>}
+                    renderItem={({datum})=><Card><Question answered={true}/></Card>}
                     keyExtractor={datum=>datum.id}
                 />
             )
@@ -108,7 +128,7 @@ class Settings extends Component {
 
                             <Content style={{paddingTop:7}}>
 
-                                    <Text style={{textAlign:"center",color:"#000"}}>--No Bio Yet--</Text>
+                                <Text style={{textAlign:"center",color:"#000"}}>--No Bio Yet--</Text>
 
                             </Content>
                             <Modal
@@ -120,158 +140,181 @@ class Settings extends Component {
                                     alert('Modal has been closed.');
                                 }}>
 
-                                <View style={{height:"95%"}}>
-                                    <ListItem >
+                                <Content >
+                                    <View>
+                                        <ListItem >
 
-                                        <Left>
-                                            <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Bio</Text>
-                                        </Left>
-                                        <Body>
+                                            <Left>
+                                                <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Bio</Text>
+                                            </Left>
+                                            <Body>
                                             <TextInput numberOFLine={5} multiline={true} placeholder={"--No Bio--"} placeholderTextColor={"#000"} style={{width:383,color:"#000"}}/>
-                                        </Body>
+                                            </Body>
 
-                                    </ListItem>
-                                    <ListItem>
-                                        <Left>
-                                            <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold", fontSize:23}}>Personal Details</Text>
-                                        </Left>
-                                    </ListItem>
-                                    <ListItem >
+                                        </ListItem>
+                                        <ListItem>
+                                            <Left>
+                                                <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold", fontSize:23}}>Personal Details</Text>
+                                            </Left>
+                                        </ListItem>
+                                        <ListItem >
 
-                                        <Left>
-                                            <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Age</Text>
-                                        </Left>
-                                        <Right>
-                                            <TextInput placeholder={"Hello World"} placeholderTextColor={"#000"} value={"34"} style={{width:150,color:"#000"}}/>
-                                        </Right>
+                                            <Left>
+                                                <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Age</Text>
+                                            </Left>
+                                            <Right>
+                                                <TextInput placeholder={"Hello World"} placeholderTextColor={"#000"} value={"34"} style={{width:150,color:"#000"}}/>
+                                            </Right>
 
-                                    </ListItem>
+                                        </ListItem>
 
-                                    <ListItem>
-                                        <Left>
-                                            <Text bold style={{ color:"#000", fontWeight:"bold"}}>Pronouns</Text>
-                                        </Left>
-                                        <Right>
-                                            <TextInput placeholder={"Hello World"} placeholderTextColor={"#000"} value={"He/Him/His"} style={{width:150,color:"#000"}}/>
-                                        </Right>
-                                    </ListItem>
+                                        <ListItem>
+                                            <Left>
+                                                <Text bold style={{ color:"#000", fontWeight:"bold"}}>Pronouns</Text>
+                                            </Left>
+                                            <Right>
+                                                <TextInput placeholder={"Hello World"} placeholderTextColor={"#000"} value={"He/Him/His"} style={{width:150,color:"#000"}}/>
+                                            </Right>
+                                        </ListItem>
 
-                                    <ListItem>
+                                        <ListItem>
 
-                                        <Left>
-                                            <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Marital Status</Text>
-                                        </Left>
-                                        <Right>
-                                            <TextInput placeholder={"Hello World"} placeholderTextColor={"#000"} value={"Divorced"} style={{width:150,color:"#000"}}/>
-                                        </Right>
+                                            <Left>
+                                                <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Marital Status</Text>
+                                            </Left>
+                                            <Right>
+                                                <TextInput placeholder={"Hello World"} placeholderTextColor={"#000"} value={"Divorced"} style={{width:150,color:"#000"}}/>
+                                            </Right>
 
-                                    </ListItem>
-                                    <ListItem>
+                                        </ListItem>
+                                        <ListItem>
 
-                                        <Left>
-                                            <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Education</Text>
-                                        </Left>
-                                        <Right>
-                                            <TextInput placeholder={"Hello World"} placeholderTextColor={"#000"} value={"Columbia University"} style={{width:150,color:"#000"}}/>
-                                        </Right>
+                                            <Left>
+                                                <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Education</Text>
+                                            </Left>
+                                            <Right>
+                                                <TextInput placeholder={"Hello World"} placeholderTextColor={"#000"} value={"Columbia University"} style={{width:150,color:"#000"}}/>
+                                            </Right>
 
-                                    </ListItem>
+                                        </ListItem>
 
-                                    <ListItem>
+                                        <ListItem>
 
-                                        <Left>
-                                            <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Contact</Text>
-                                        </Left>
-                                        <Right>
-                                            <TextInput placeholder={"Hello World"} placeholderTextColor={"#000"} value={"9174127058"} style={{width:150,color:"#000"}}/>
-                                        </Right>
+                                            <Left>
+                                                <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Contact</Text>
+                                            </Left>
+                                            <Right>
+                                                <TextInput placeholder={"Hello World"} placeholderTextColor={"#000"} value={"9174127058"} style={{width:150,color:"#000"}}/>
+                                            </Right>
 
-                                    </ListItem>
-                                    {this.props.politician ?
-                                        <View>
-                                            <ListItem>
-                                                <Left>
-                                                    <Text bold style={{
-                                                        alignItems: "center",
-                                                        color: "#000",
-                                                        fontWeight: "bold",
-                                                        fontSize: 23
-                                                    }}>Verified Documents</Text>
-                                                </Left>
-                                            </ListItem>
-                                            <ListItem>
-                                                <Left>
-                                                    <Text bold
-                                                          style={{alignItems: "center", color: "#000", fontWeight: "bold"}}>Birth
-                                                        Certificate</Text>
-                                                </Left>
-                                                <Right>
-                                                    <Text style={{alignItems: "center", color: "#000"}}>None</Text>
-                                                </Right>
-                                            </ListItem>
-                                            <ListItem>
-                                                <Left>
-                                                    <Text bold
-                                                          style={{alignItems: "center", color: "#000", fontWeight: "bold"}}>Tax
-                                                        Returns</Text>
-                                                </Left>
-                                                <Right>
-                                                    <Text style={{alignItems: "center", color: "#000"}}>None</Text>
-                                                </Right>
-                                            </ListItem>
-                                            <ListItem>
-                                                <Left>
-                                                    <Text bold style={{
-                                                        alignItems: "center",
-                                                        color: "#000",
-                                                        fontWeight: "bold"
-                                                    }}>Degrees</Text>
-                                                </Left>
-                                                <Right>
-                                                    <Text style={{alignItems: "center", color: "#000"}}>None</Text>
-                                                </Right>
-                                            </ListItem>
-                                            <ListItem>
-                                                <Left>
-                                                    <Text bold style={{
-                                                        alignItems: "center",
-                                                        color: "#000",
-                                                        fontSize: 23,
-                                                        fontWeight: "bold"
-                                                    }}>Other Documents</Text>
-                                                </Left>
-                                            </ListItem>
-                                        </View>
-                                        :
-                                        null
-                                    }
+                                        </ListItem>
+                                        {true ?
+                                            <Content>
+                                                <ListItem>
+                                                    <Left>
+                                                        <Text bold style={{
+                                                            alignItems: "center",
+                                                            color: "#000",
+                                                            fontWeight: "bold",
+                                                            fontSize: 23
+                                                        }}>Verified Documents</Text>
+                                                    </Left>
+                                                </ListItem>
+                                                <ListItem>
+                                                    <Left>
+                                                        <Text bold
+                                                              style={{alignItems: "center", color: "#000", fontWeight: "bold"}}>Birth
+                                                            Certificate</Text>
+                                                    </Left>
+                                                    <Right>
+                                                        <Button style={{width:100, height:30}} ><Text>Upload</Text></Button>
+                                                    </Right>
+                                                </ListItem>
+                                                <ListItem>
+                                                    <Left>
+                                                        <Text bold
+                                                              style={{alignItems: "center", color: "#000", fontWeight: "bold"}}>Tax
+                                                            Returns</Text>
+                                                    </Left>
+                                                    <Right>
+                                                        <Button style={{width:100, height:30}} ><Text>Upload</Text></Button>
+                                                    </Right>
+                                                </ListItem>
+                                                <ListItem>
+                                                    <Left>
+                                                        <Text bold style={{
+                                                            alignItems: "center",
+                                                            color: "#000",
+                                                            fontWeight: "bold"
+                                                        }}>Degrees</Text>
+                                                    </Left>
+                                                    <Right>
+                                                        <Button  style={{width:100, height:30}} ><Text>Upload</Text></Button>
+                                                    </Right>
+                                                </ListItem>
+                                                <ListItem>
+                                                    <Left>
+                                                        <Text bold style={{
+                                                            alignItems: "center",
+                                                            color: "#000",
+                                                            fontSize: 23,
+                                                            fontWeight: "bold"
+                                                        }}>Other Documents</Text>
+                                                    </Left>
+                                                </ListItem>
+                                                <Text>{this.state.url}</Text>
+                                                {this.props.otherDocs ?
+                                                    <FlatList
+                                                        data={this.props.otherDocs}
+                                                        renderItem={({item})=>
+                                                            <ListItem>
+                                                                <Left>
+                                                                    <Text>{item.name}</Text>
+                                                                </Left>
+                                                                <Right>
+                                                                    <Button><Text>Remove</Text></Button>
+                                                                </Right>
+                                                            </ListItem>
+                                                        }
+                                                    />
+                                                    :
+                                                    null}
+                                                <Body style={{padding:13}}>
+                                                <Button onPress={()=>this.getUri()}><Text>Upload</Text></Button>
+                                                </Body>
+                                            </Content>
+                                            :
+                                            null
+                                        }
+                                    </View>
+                                </Content>
+                                <Footer>
+                                <Grid style={{bottom:0}}>
+                                    <Row>
+                                        <Col style={{backgroundColor:"#840000"}}>
+                                            <TouchableOpacity onPress={()=>this.renderModal(false)}>
+                                                <View style={styles.linkTabs_header}>
 
-                                </View>
+                                                    <Text  style={styles.linkTabs_tabName}>
+                                                        Cancel
+                                                    </Text>
+                                                </View>
+                                            </TouchableOpacity>
+                                        </Col>
+                                        <Col style={{backgroundColor:"#000084"}}>
+                                            <TouchableOpacity onPress={()=>this.renderModal(false)}>
+                                                <View style={styles.linkTabs_header}>
 
-                                    <Grid style={{bottom:0}}>
-                                        <Row>
-                                            <Col style={{backgroundColor:"#840000"}}>
-                                                <TouchableOpacity onPress={()=>this.renderModal(false)}>
-                                                    <View style={styles.linkTabs_header}>
+                                                    <Text style={styles.linkTabs_tabName}>
+                                                        Save Changes
+                                                    </Text>
+                                                </View>
+                                            </TouchableOpacity>
+                                        </Col>
+                                    </Row>
+                                </Grid>
+                                </Footer>
 
-                                                        <Text  style={styles.linkTabs_tabName}>
-                                                            Cancel
-                                                        </Text>
-                                                    </View>
-                                                </TouchableOpacity>
-                                            </Col>
-                                            <Col style={{backgroundColor:"#000084"}}>
-                                                <TouchableOpacity onPress={()=>this.renderModal(false)}>
-                                                    <View style={styles.linkTabs_header}>
-
-                                                        <Text style={styles.linkTabs_tabName}>
-                                                            Save Changes
-                                                        </Text>
-                                                    </View>
-                                                </TouchableOpacity>
-                                            </Col>
-                                        </Row>
-                                    </Grid>
                             </Modal>
 
 
@@ -286,7 +329,7 @@ class Settings extends Component {
                                     <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Age</Text>
                                 </Left>
                                 <Right>
-                                    <Text style={{alignItems:"center", color:"#000"}}>34</Text>
+                                    <Text style={{width:150,alignItems:"center", color:"#000"}}>34</Text>
                                 </Right>
 
                             </ListItem>
@@ -296,7 +339,7 @@ class Settings extends Component {
                                     <Text bold style={{ color:"#000", fontWeight:"bold"}}>Pronouns</Text>
                                 </Left>
                                 <Right>
-                                    <Text style={{ color:"#000"}}>he/him/his</Text>
+                                    <Text style={{ width:150,color:"#000"}}>he/him/his</Text>
                                 </Right>
                             </ListItem>
 
@@ -306,7 +349,7 @@ class Settings extends Component {
                                     <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Marital Status</Text>
                                 </Left>
                                 <Right>
-                                    <Text style={{alignItems:"center", color:"#000"}}>Divorced</Text>
+                                    <Text style={{width:150,alignItems:"center", color:"#000"}}>Divorced</Text>
                                 </Right>
 
                             </ListItem>
@@ -316,9 +359,17 @@ class Settings extends Component {
                                     <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Education</Text>
                                 </Left>
                                 <Right>
-                                    <Text style={{alignItems:"center", color:"#000"}}>Columbia University</Text>
+                                    <Text style={{width:150,alignItems:"center", color:"#000"}}>Columbia University</Text>
                                 </Right>
 
+                            </ListItem>
+                            <ListItem>
+                                <Left>
+                                    <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Party</Text>
+                                </Left>
+                                <Right>
+                                    <Text style={{width:150,alignItems:"center", color:"#000"}}>Fucking Republican</Text>
+                                </Right>
                             </ListItem>
 
                             <ListItem>
@@ -327,7 +378,7 @@ class Settings extends Component {
                                     <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Contact</Text>
                                 </Left>
                                 <Right>
-                                    <Text style={{alignItems:"center", color:"#000"}}>any format</Text>
+                                    <Text style={{width:150,alignContent:"center", color:"#000"}}>any format</Text>
                                 </Right>
 
                             </ListItem>
@@ -389,42 +440,37 @@ class Settings extends Component {
                                 :
                                 null
                             }
-                            <TouchableOpacity onPress={()=>this.renderModal(true)}>
-                                <View style={{height:55,paddingTop:13,alignContent:"center",width:"100%", backgroundColor:"#50128d"}}>
+                            <Button style={{alignSelf:"center", padding:13}}onPress={()=>this.renderModal(true)}>
+                                <View style={{height:55,padding:13,alignContent:"center", backgroundColor:"#50128d"}}>
                                     <Text style={{alignSelf:"center"}}>Edit</Text>
                                 </View>
-                            </TouchableOpacity>
+                            </Button>
                         </Content>
                         :
                         null
                     }
 
-                    <View style={{bottom:this.props.seeProfile ? 0 : null,backgroundColor: "#fff", flex:1}}>
-                        <Grid>
-                            {this.props.politician ?
-                                <Row>
-                                    <Col style={{backgroundColor:"#840000"}}>
-                                        <TouchableOpacity onPress={this.props.toggleQuestionsOn}>
-                                            <View style={styles.linkTabs_header}>
-                                                <Text style={styles.linkTabs_tabCounts}>13</Text>
-                                                <Text  style={styles.linkTabs_tabName}>
-                                                    Unanswered
-                                                </Text>
-                                            </View>
-                                        </TouchableOpacity>
-                                    </Col>
-                                    <Col style={{backgroundColor:"#000084"}}>
-                                        <TouchableOpacity onPress={this.props.toggleQuestionsOn}>
-                                            <View style={styles.linkTabs_header}>
-                                                <Text style={styles.linkTabs_tabCounts}>52</Text>
-                                                <Text style={styles.linkTabs_tabName}>
-                                                    Answered
-                                                </Text>
-                                            </View>
-                                        </TouchableOpacity>
-                                    </Col>
-                                </Row>
-                                :
+
+
+                    {/*{//this.props.seeProfile ? return <Text style={{color:"#000"}}>HEYYYYY</Text> : ()=>{return this.renderQuestions()}}*/}
+                    <View>
+                        {!this.props.seeProfile ? this.renderQuestions() : null}
+                    </View>
+                </Content>
+                <Footer style={{bottom:this.props.seeProfile ? 0 : null,backgroundColor: "#fff",  paddingTop:13}}>
+                    <Grid>
+                        {this.props.politician ?
+                            <Row>
+                                <Col style={{backgroundColor:"#840000"}}>
+                                    <TouchableOpacity onPress={this.props.toggleQuestionsOn}>
+                                        <View style={styles.linkTabs_header}>
+                                            <Text style={styles.linkTabs_tabCounts}>13</Text>
+                                            <Text  style={styles.linkTabs_tabName}>
+                                                Unanswered
+                                            </Text>
+                                        </View>
+                                    </TouchableOpacity>
+                                </Col>
                                 <Col style={{backgroundColor:"#000084"}}>
                                     <TouchableOpacity onPress={this.props.toggleQuestionsOn}>
                                         <View style={styles.linkTabs_header}>
@@ -435,15 +481,21 @@ class Settings extends Component {
                                         </View>
                                     </TouchableOpacity>
                                 </Col>
-                            }
-                        </Grid>
-                    </View>
+                            </Row>
+                            :
+                            <Col style={{backgroundColor:"#000084"}}>
+                                <TouchableOpacity onPress={this.props.toggleQuestionsOn}>
+                                    <View style={styles.linkTabs_header}>
 
-                    {/*{//this.props.seeProfile ? return <Text style={{color:"#000"}}>HEYYYYY</Text> : ()=>{return this.renderQuestions()}}*/}
-                    <View>
-                        {!this.props.seeProfile ? this.renderQuestions() : null}
-                    </View>
-                </Content>
+                                        <Text style={styles.linkTabs_tabName}>
+                                            Questions [52]
+                                        </Text>
+                                    </View>
+                                </TouchableOpacity>
+                            </Col>
+                        }
+                    </Grid>
+                </Footer>
 
             </Container>
         );

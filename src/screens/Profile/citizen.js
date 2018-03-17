@@ -12,7 +12,7 @@ import {
     ListItem,
     Button,
     Icon,
-    Left, Right, Body
+    Left, Right, Body, Card, Footer
 } from "native-base";
 import { Grid, Col } from "react-native-easy-grid";
 import CustomHeader from "../../components/CustomHeader";
@@ -40,8 +40,8 @@ class Citizen extends Component {
     }
     renderQuestions=()=>{
         if(this.ds.cloneWithRows(this.state.listViewData).getRowCount() === 0){
-             return (
-                 <View style={styles.linkTabs}>
+            return (
+                <View style={styles.linkTabs}>
                     <ListItem
                         style={{
                             backgroundColor: "#fff",
@@ -50,15 +50,15 @@ class Citizen extends Component {
                     >
                         <Text style={styles.textNote}>Empty List</Text>
                     </ListItem>
-                 </View>)
+                </View>)
         } else {
             return (
                 <FlatList
                     data={datas}
-                    renderItem={({datum})=><Question answered="true"/>}
+                    renderItem={({datum})=><Card><Question answered="true"/></Card>}
                     keyExtractor={datum=>datum.id}
                 />
-                )
+            )
         }
     }
     render() {
@@ -66,114 +66,115 @@ class Citizen extends Component {
         return (
             <Container style={{flexDirection:"column"}}>
 
-                    <CustomHeader hasTabs navigation={navigation} />
+                <CustomHeader  navigation={navigation} />
 
-                        <View style={styles.profileInfoContainer}>
-                            <TouchableOpacity onPress={this.props.toggleQuestionsOff}>
-                                <View style={{ alignSelf: "center" }}>
-                                    <Thumbnail
-                                        source={require("../../../assets/Contacts/sankha.png")}
-                                        style={styles.profilePic}
-                                    />
-                                </View>
-                                <View style={styles.profileInfo}>
-                                    <Text style={styles.profileUser}>Fafa Yelijoch Wetet</Text>
-                                    <Text note style={styles.profileUserInfo}>
-                                        Mn Abah Agebah?
+                <View style={styles.profileInfoContainer}>
+                    <TouchableOpacity onPress={this.props.toggleQuestionsOff}>
+                        <View style={{ alignSelf: "center" }}>
+                            <Thumbnail
+                                source={require("../../../assets/Contacts/sankha.png")}
+                                style={styles.profilePic}
+                            />
+                        </View>
+                        <View style={styles.profileInfo}>
+                            <Text style={styles.profileUser}>Fafa Yelijoch Wetet</Text>
+                            <Text note style={styles.profileUserInfo}>
+                                Mn Abah Agebah?
+                            </Text>
+                        </View>
+                    </TouchableOpacity>
+                </View>
+
+                <Content
+                    showsVerticalScrollIndicator={false}
+                    style={{backgroundColor: "#fff" }}
+                >
+                    {this.props.seeProfile ?
+                        <Content style={{height:this.props.seeProfile ? 0.73*Dimensions.get("window").height : 0,flex:9}}>
+                            <Content style={{paddingTop:7}}>
+                                <Text style={{textAlign:"center",color:"#000"}}>--No Bio Yet--</Text>
+                            </Content>
+                            <ListItem>
+                                <Left>
+                                    <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold", fontSize:23}}>Personal Details</Text>
+                                </Left>
+
+                            </ListItem>
+                            <ListItem>
+                                <Left>
+                                    <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Age</Text>
+                                </Left>
+                                <Right>
+                                    <Text style={{width:150,alignItems:"center", color:"#000"}}>34</Text>
+                                </Right>
+                            </ListItem>
+                            <ListItem>
+                                <Left>
+                                    <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Pronouns</Text>
+                                </Left>
+                                <Right>
+                                    <Text style={{width:150,alignItems:"center", color:"#000"}}>He/Him/His</Text>
+                                </Right>
+                            </ListItem>
+                            <ListItem>
+                                <Left>
+                                    <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Marital Status</Text>
+                                </Left>
+                                <Right>
+                                    <Text style={{width:150,alignItems:"center", color:"#000"}}>Divorced</Text>
+                                </Right>
+                            </ListItem>
+                            <ListItem>
+                                <Left>
+                                    <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Education</Text>
+                                </Left>
+                                <Right>
+                                    <Text style={{width:150,alignItems:"center", color:"#000"}}>Columbia University</Text>
+                                </Right>
+                            </ListItem>
+                            <ListItem>
+                                <Left>
+                                    <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Party</Text>
+                                </Left>
+                                <Right>
+                                    <Text style={{width:150,alignItems:"center", color:"#000"}}>Fucking Republican</Text>
+                                </Right>
+                            </ListItem>
+                            <ListItem>
+                                <Left>
+                                    <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Contact</Text>
+                                </Left>
+                                <Right>
+                                    <Text style={{width:150,alignItems:"center", color:"#000"}}>any format</Text>
+                                </Right>
+                            </ListItem>
+                        </Content>
+                        :
+                        null
+                    }
+
+
+                    {/*{//this.props.seeProfile ? return <Text style={{color:"#000"}}>HEYYYYY</Text> : ()=>{return this.renderQuestions()}}*/}
+                    <View>
+                        {!this.props.seeProfile ? this.renderQuestions() : null}
+                    </View>
+                </Content>
+                <Footer style={{bottom:this.props.seeProfile ? 0 : null,backgroundColor: "#fff"}}>
+                    <Grid>
+
+                        <Col style={{backgroundColor:"#000084"}}>
+                            <TouchableOpacity onPress={this.props.toggleQuestionsOn}>
+                                <View style={styles.linkTabs_header}>
+
+                                    <Text style={styles.linkTabs_tabName}>
+                                        Questions[52]
                                     </Text>
                                 </View>
                             </TouchableOpacity>
-                        </View>
+                        </Col>
 
-                    <Content
-                        showsVerticalScrollIndicator={false}
-                        style={{backgroundColor: "#fff" }}
-                    >
-                        {this.props.seeProfile ?
-                            <Content style={{height:this.props.seeProfile ? 0.73*Dimensions.get("window").height : 0,flex:9}}>
-                                <Content style={{paddingTop:7}}>
-                                    <Text style={{textAlign:"center",color:"#000"}}>--No Bio Yet--</Text>
-                                </Content>
-                                <ListItem>
-                                    <Left>
-                                        <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold", fontSize:23}}>Personal Details</Text>
-                                    </Left>
-
-                                </ListItem>
-                                <ListItem>
-                                    <Left>
-                                        <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Age</Text>
-                                    </Left>
-                                    <Right>
-                                        <Text style={{alignItems:"center", color:"#000"}}>34</Text>
-                                    </Right>
-                                </ListItem>
-                                <ListItem>
-                                    <Left>
-                                        <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Pronouns</Text>
-                                    </Left>
-                                    <Right>
-                                        <Text style={{alignItems:"center", color:"#000"}}>He/Him/His</Text>
-                                    </Right>
-                                </ListItem>
-                                <ListItem>
-                                    <Left>
-                                        <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Marital Status</Text>
-                                    </Left>
-                                    <Right>
-                                        <Text style={{alignItems:"center", color:"#000"}}>Divorced</Text>
-                                    </Right>
-                                </ListItem>
-                                <ListItem>
-                                    <Left>
-                                        <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Education</Text>
-                                    </Left>
-                                    <Right>
-                                        <Text style={{alignItems:"center", color:"#000"}}>Columbia University</Text>
-                                    </Right>
-                                </ListItem>
-                                <ListItem>
-                                    <Left>
-                                        <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Party</Text>
-                                    </Left>
-                                    <Right>
-                                        <Text style={{alignItems:"center", color:"#000"}}>Fucking Republican</Text>
-                                    </Right>
-                                </ListItem>
-                                <ListItem>
-                                    <Left>
-                                        <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Contact</Text>
-                                    </Left>
-                                    <Right>
-                                        <Text style={{alignItems:"center", color:"#000"}}>any format</Text>
-                                    </Right>
-                                </ListItem>
-                            </Content>
-                            :
-                            null
-                        }
-                        <View style={{bottom:this.props.seeProfile ? 0 : null,backgroundColor: "#fff", flex:1}}>
-                            <Grid>
-
-                                    <Col style={{backgroundColor:"#000084"}}>
-                                        <TouchableOpacity onPress={this.props.toggleQuestionsOn}>
-                                            <View style={styles.linkTabs_header}>
-                                                <Text style={styles.linkTabs_tabCounts}>52</Text>
-                                                <Text style={styles.linkTabs_tabName}>
-                                                    Questions
-                                                </Text>
-                                            </View>
-                                        </TouchableOpacity>
-                                    </Col>
-
-                            </Grid>
-                        </View>
-
-                        {/*{//this.props.seeProfile ? return <Text style={{color:"#000"}}>HEYYYYY</Text> : ()=>{return this.renderQuestions()}}*/}
-                        <View>
-                            {!this.props.seeProfile ? this.renderQuestions() : null}
-                        </View>
-                    </Content>
+                    </Grid>
+                </Footer>
 
             </Container>
         );
@@ -191,8 +192,7 @@ function mapActions(dispatch){
 const mapState = state=>({
     uid: state.profileRed.uid,
     data:state.profileRed.data,
-    seeProfile: state.profileRed.seeProfile,
-
+    seeProfile: state.profileRed.seeProfile
 })
 export default  connect(mapState, mapActions)(Citizen);
 
