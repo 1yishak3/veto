@@ -15,3 +15,10 @@ export {
 export{
     toggleQuestions,
 } from "../screens/Profile/actions"
+export {
+    setThreadId,
+    getThread,
+    fetchSuccess,
+    fetchFail,
+    isLoading
+} from "../screens/Thread/actions"

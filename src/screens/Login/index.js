@@ -45,11 +45,11 @@ class LoginForm extends Component {
   renderInput({ input, label, type, meta: { touched, error, warning } }) {
     return (
       <View>
-        <Item error={error && touched} rounded style={styles.inputGrp}>
+        <Item error={error && touched}  style={styles.inputGrp}>
           <Icon
             active
             name={input.name === "email" ? "mail" : "unlock"}
-            style={{ color: "#fff" }}
+            style={{ padding:13,color: "#fff" }}
           />
           <Input
             ref={c => (this.textInput = c)}

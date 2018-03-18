@@ -1,36 +1,41 @@
 import React, { Component} from "react";
 import { Image,  TouchableOpacity, Dimensions} from "react-native";
 import { Icon, Button, Left,Container, ListItem, Right, Body, Header, Content, Thumbnail, View, Text} from "native-base";
-
-import styles from "./styles";
+import {setThreadId} from "../../actions"
+import {connect} from "react-redux"
 // const headerLogo = require("../../../assets/header-logo.png");
 
 class Question extends Component {
+    goThread = (uid:any)=>{
+        this.props.setTid(uid)
+        this.props.navigation.navigate("Thread")
+    }
     render() {
         const navigation = this.props.navigation;
         return (
 
             <Content style={{backgroundColor:"#50128d",paddingLeft:13,paddingRight:13, paddingTop:7, paddingBottom:7}}>
                 <Content style={{backgroundColor:"#50128d",flexDirection:"column"}}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={this.goThread(this.props.data.uid)}>
                     <View style={{padding:13,flexDirection:"row"}}>
                         <Left style={{alignContent:"center",flexDirection:"column"}}>
                             <Thumbnail
                                 source={require("../../../assets/Contacts/saurav.png")}
-                                style={{width:73, height:73, borderRadius:100}}
+                                style={{alignSelf:"flex-start",width:73, height:73, borderRadius:100}}
                             />
-                            <Text>
+                            <Text style={{alignSelf:"flex-start"}}>
                                 Ekele
                             </Text>
                         </Left>
-                        <Icon active name="md-arrow-round-forward" style={{fontSize: 55}}/>
+                        {/*<Icon active name="md-arrow-round-forward" style={{fontSize: 55}}/>*/}
+                        <Text style={{paddingTop:19,fontSize:23, fontWeight:"bold"}}>asked</Text>
                         <Right style={{alignContent:"center",flexDirection:"column"}}>
                             <Thumbnail
                                 source={require("../../../assets/Contacts/sankha.png")}
-                                style={{width:73, height:73, borderRadius:100}}
+                                style={{alignSelf:"flex-end",width:73, height:73, borderRadius:100}}
                             />
-                            <Text>
-                                Ekele2
+                            <Text style={{alignSelf:"flex-end"}}>
+                                Ekele2 what
                             </Text>
                         </Right>
                     </View>
@@ -66,5 +71,9 @@ class Question extends Component {
         );
     }
 }
-
-export default Question;
+function bindAction(dispatch){
+    return{
+        setTid: (tid:string)=>dispatch(setThreadId(tid))
+    }
+}
+export default connect(bindAction)(Question);

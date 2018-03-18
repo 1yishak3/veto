@@ -105,7 +105,7 @@ class Citizen extends Component {
                                     <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Age</Text>
                                 </Left>
                                 <Right>
-                                    <Text style={{alignItems:"center", color:"#000"}}>34</Text>
+                                    <Text style={{width:150,alignItems:"center", color:"#000"}}>34</Text>
                                 </Right>
                             </ListItem>
                             <ListItem>
@@ -113,7 +113,7 @@ class Citizen extends Component {
                                     <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Pronouns</Text>
                                 </Left>
                                 <Right>
-                                    <Text style={{alignItems:"center", color:"#000"}}>He/Him/His</Text>
+                                    <Text style={{width:150,alignItems:"center", color:"#000"}}>He/Him/His</Text>
                                 </Right>
                             </ListItem>
                             <ListItem>
@@ -121,7 +121,7 @@ class Citizen extends Component {
                                     <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Marital Status</Text>
                                 </Left>
                                 <Right>
-                                    <Text style={{alignItems:"center", color:"#000"}}>Divorced</Text>
+                                    <Text style={{width:150,alignItems:"center", color:"#000"}}>Divorced</Text>
                                 </Right>
                             </ListItem>
                             <ListItem>
@@ -129,7 +129,7 @@ class Citizen extends Component {
                                     <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Education</Text>
                                 </Left>
                                 <Right>
-                                    <Text style={{alignItems:"center", color:"#000"}}>Columbia University</Text>
+                                    <Text style={{width:150,alignItems:"center", color:"#000"}}>Columbia University</Text>
                                 </Right>
                             </ListItem>
                             <ListItem>
@@ -137,7 +137,7 @@ class Citizen extends Component {
                                     <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Party</Text>
                                 </Left>
                                 <Right>
-                                    <Text style={{alignItems:"center", color:"#000"}}>Fucking Republican</Text>
+                                    <Text style={{width:150,alignItems:"center", color:"#000"}}>Fucking Republican</Text>
                                 </Right>
                             </ListItem>
                             <ListItem>
@@ -145,7 +145,7 @@ class Citizen extends Component {
                                     <Text bold style={{alignItems:"center", color:"#000", fontWeight:"bold"}}>Contact</Text>
                                 </Left>
                                 <Right>
-                                    <Text style={{alignItems:"center", color:"#000"}}>any format</Text>
+                                    <Text style={{width:150,alignItems:"center", color:"#000"}}>any format</Text>
                                 </Right>
                             </ListItem>
                         </Content>
