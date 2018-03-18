@@ -10,11 +10,20 @@ class CustomHeader extends Component {
     const navigation = this.props.navigation;
     return (
       <Header hasTabs={this.props.hasTabs}>
-        <Left>
-          <Button transparent onPress={() => navigation.navigate("DrawerOpen")}>
-            <Icon active name="menu" />
-          </Button>
-        </Left>
+          { this.props.which===0 ?
+              <Left>
+                  <Button transparent
+                          onPress={() => navigation.navigate("DrawerOpen")}>
+                      <Icon active name="menu"/>
+                  </Button>
+              </Left>:
+              <Left>
+                  <Button transparent
+                          onPress={() => navigation.goBack()}>
+                      <Icon active name="md-arrow-round-back"/>
+                  </Button>
+              </Left>
+          }
         <Body>
 
         </Body>

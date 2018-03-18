@@ -22,3 +22,6 @@ export {
     fetchFail,
     isLoading
 } from "../screens/Thread/actions"
+export {
+
+} from "../screens/AddPolipeople/actions"

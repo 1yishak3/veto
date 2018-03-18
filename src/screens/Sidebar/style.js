@@ -49,13 +49,13 @@ export default {
     },
     poliperson:{
         flexDirection:"row",
-        height:70,
+        height:60,
         paddingLeft:23,
         paddingRight:23
     },
     polipic:{
-        height:55,
-        width:55,
+        height:45,
+        width:45,
         borderRadius:100,
         paddingLeft:13,
         paddingBottom:7,

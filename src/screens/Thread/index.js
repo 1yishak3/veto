@@ -15,7 +15,8 @@ import {
     Slider,
     Dimensions,
     FlatList,
-    TextInput
+    TextInput,
+    Modal
 
 } from "react-native";
 import {
@@ -37,9 +38,7 @@ import {
     Input
 
 } from "native-base";
-import { Grid, Row, Col } from "react-native-easy-grid";
 
-import Modal from "react-native-modalbox";
 
 
 import styles from "./styles";
@@ -298,17 +297,22 @@ class Thread extends Component {
 
                     </Fab>
                 </Container>
-                {//The modal has an if to check whether the user is a
-                    // politician the question was addressed to or some
-                    // other user
-                }
+               
                 <Modal
-                    entry="top"
+                    style={{backgroundColor:"#7413b9"}}
                     animationType="slide"
-                    isOpen={this.state.activeModal}
-                    onOpened={() => this.setState({ ...this.state, activeModal: true })}
-                    onClosed={() => this.setState({ ...this.state, activeModal: false })}
+                    transparent={false}
+                    visible={this.state.activeModal}
+                    backButtonClose
 
+                    isOpen={this.state.activeModal}
+                    onRequestClose={()=>{
+                        this.setState({
+                            ...this.state,
+                            activeModal:false
+                        })
+                        alert("Lol you closed shit")
+                    }}
 
                 >
                     <Content style={styles.modal}>
@@ -321,6 +325,7 @@ class Thread extends Component {
                             placeholder={this.props.user===this.props.thread.politician ?
                                 "Post your answer" : "Post your follow up."}
                             onContentSizeChange={(e)=>this.adjustLines(e.nativeEvent.contentSize.height)}
+                            underlineColorAndroid={"#fff"}
                             style={{width:"100%", borderColor:"#50128d"}}
                         >
                         </TextInput>

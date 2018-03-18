@@ -12,7 +12,8 @@ import {
     Thumbnail,
     View,
     Input,
-    Item
+    Item,
+    Button
 } from "native-base";
 
 import styles from "./style";
@@ -98,14 +99,15 @@ class SideBar extends Component {
                 </Content>
                 <View style={styles.logoutContainer}>
                     <View style={styles.logoutbtn} foregroundColor={"white"}>
-                        <TouchableOpacity style={{height:43,
+                        <Button style={{height:43,
                             width:"75%",
-
-                            alignItems:"center",
+                            justifyContent:"center",
                             backgroundColor:"#ffffff",
-                            borderRadius:23}}>
-                            <Text style={{paddingTop:7, color:"#340679"}}>Add Polipeople</Text>
-                        </TouchableOpacity>
+                            }}
+                                active
+                        onPress={()=>this.props.navigation.navigate("AddPolipeople")}>
+                            <Text style={{ color:"#340679"}}>Add Polipeople</Text>
+                        </Button>
                     </View>
                 </View>
 

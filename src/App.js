@@ -13,7 +13,7 @@ import Thread from "./screens/Thread";
 import Home from "./screens/Home/";
 import Channels from "./screens/Channels";
 import Sidebar from "./screens/Sidebar";
-import Overview from "./screens/Overview";
+import AddPolipeople from "./screens/AddPolipeople";
 import Calendar from "./screens/Calendar/";
 import Timeline from "./screens/Timeline";
 import Feedback from "./screens/Feedback/";
@@ -24,7 +24,7 @@ const Drawer = DrawerNavigator(
     {
         Home: { screen: Home },
         // Channels: { screen: Channels },
-        // Overview: { screen: Overview },
+        // AddPolipeople: { screen: AddPolipeople },
         // Calendar: { screen: Calendar },
         // Timeline: { screen: Timeline },
         // Feedback: { screen: Feedback },
@@ -51,6 +51,7 @@ const App = StackNavigator(
         Profile: { screen: Profile },
         Settings: { screen: Settings },
         Home: { screen: Home },
+        AddPolipeople:{screen:AddPolipeople}
     },
     {
         index: 0,

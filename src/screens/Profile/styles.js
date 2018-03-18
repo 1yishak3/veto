@@ -98,5 +98,12 @@ export default {
         flex: 1,
         alignItems: "center",
         justifyContent: "center"
-    }
+    },
+    modal: {
+        backgroundColor: "#ffffff",
+
+        width: deviceWidth,
+        height: null,
+
+    },
 };
