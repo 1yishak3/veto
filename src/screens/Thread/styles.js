@@ -94,12 +94,11 @@ export default {
     alignSelf: "center"
   },
   modal: {
-    backgroundColor: primary,
-    position: "absolute",
+    backgroundColor: "#fff",
+
     width: deviceWidth,
     height: null,
-    top: Platform.OS === "android" ? 55 : 60,
-    paddingBottom: Platform.OS === "android" ? 20 : 10
+
   },
   slide: {
     flex: 1,

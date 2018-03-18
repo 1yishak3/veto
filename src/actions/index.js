@@ -1,6 +1,27 @@
 export {
-  itemsHasErrored,
-  itemsIsLoading,
-  itemsFetchDataSuccess,
-  itemsFetchData
+    itemsHasErrored,
+    itemsIsLoading,
+    itemsFetchDataSuccess,
+    itemsFetchData
 } from "../screens/Home/actions";
+export {
+    update
+} from "../screens/Settings/actions"
+export {
+    filterOwnPolipeople,
+    setProfileId
+} from "../screens/Sidebar/actions"
+
+export{
+    toggleQuestions,
+} from "../screens/Profile/actions"
+export {
+    setThreadId,
+    getThread,
+    fetchSuccess,
+    fetchFail,
+    isLoading
+} from "../screens/Thread/actions"
+export {
+
+} from "../screens/AddPolipeople/actions"
