@@ -32,6 +32,6 @@ export function fetchFail(error:any){
 export function getThread(thread:Object){
     return dispatch => {
         dispatch(fetchSuccess(thread))
-        dispatch(isLoading(false))_
+        dispatch(isLoading(false))
     }
 }

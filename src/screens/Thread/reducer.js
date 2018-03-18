@@ -1,7 +1,7 @@
 const initialState={
     tid:null,
     thread:{},
-    isLoading:true,
+    isLoading:false,
     error:""
 }
 export default function(state=initialState, action:Function){

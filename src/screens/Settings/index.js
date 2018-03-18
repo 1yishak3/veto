@@ -136,6 +136,7 @@ class Settings extends Component {
                                 animationType="slide"
                                 transparent={false}
                                 visible={this.state.modal}
+                                backButtonClose
                                 onRequestClose={() => {
                                     alert('Modal has been closed.');
                                 }}>
