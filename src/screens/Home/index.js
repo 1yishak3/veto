@@ -28,12 +28,11 @@ import * as firebase from "firebase"
 import {itemsFetchData, itemsIsLoading, decypher, cypher, setStatus} from "../../actions";
 import Question from "../../components/question"
 import datas from "./data.json";
-
 import styles from "./styles";
 
 const deviceWidth = Dimensions.get("window").width;
 const deviceHeight = Dimensions.get("window").height;
-
+const db = firebase.database()
 class Home extends Component {
     componentDidMount() {
         this.props.itemLoading(true)
@@ -43,14 +42,14 @@ class Home extends Component {
         //loggedIn
         //poliperson?
         //fast data->
-                //everything from
-        AsyncStorage.getItem("veto-status").then((data)=>{
-            //data check
-            this.props.setStatus(data)
-            firebase.database().ref("users/"+this.props.decypher(data.uid)+"/")
-        }).catch((error)=>{
-            console.log("Erred: "+ error)
+
+        var uref = db.ref("users/"+this.props.decypher(this.props.huid) + "/")
+        uref.once("value").then((data)=>{
+            this.props.fetchedUserData(data)
+        }).catch((err)=>{
+            console.log("Erred: "+err)
         })
+
     }
 
     render() {
@@ -103,6 +102,7 @@ function bindAction(dispatch) {
         fetchedData: data => dispatch(itemsFetchData(data)),
         itemLoading: bool => dispatch(itemsIsLoading(bool)),
         setStatus: data => dispatch(setStatus(data)),
+
     };
 }
 
@@ -110,5 +110,6 @@ const mapStateToProps = state => ({
     questions: state.homeRed.questions,
     hasErrored: state.homeRed.hasErrored,
     isLoading: state.homeRed.isLoading,
+    huid: state.mainRed.huid
 });
 export default connect(mapStateToProps, bindAction)(Home);
