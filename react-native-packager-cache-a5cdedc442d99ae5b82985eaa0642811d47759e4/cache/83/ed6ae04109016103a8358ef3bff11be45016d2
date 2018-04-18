@@ -1,6 +1,0 @@
-
-function safeGet(object, key) {
-  return key == '__proto__' ? undefined : object[key];
-}
-
-module.exports = safeGet;
