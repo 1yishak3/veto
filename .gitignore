@@ -6,7 +6,6 @@
 #
 android/
 ios/
-
 build/
 *.pbxuser
 !default.pbxuser
@@ -44,13 +43,16 @@ buck-out/
 \.buckd/
 *.keystore
 
-# fastlane
-#
-# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
-# screenshots whenever they are needed.
-# For more information about the recommended setup visit:
-# https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Gitignore.md
 
 fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
+
+# personal bookkeeping
+structure.md
+
+# backend blackbox
+veto-backend/
+
+# cache
+react-native-packager-cache-*/

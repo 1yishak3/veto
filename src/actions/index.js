@@ -25,3 +25,11 @@ export {
 export {
 
 } from "../screens/AddPolipeople/actions"
+
+export function decypher(uid){
+    return uid
+}
+
+export function cypher(uid){
+    return uid
+}
