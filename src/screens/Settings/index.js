@@ -21,7 +21,6 @@ import styles from "./styles";
 import datas from "./data";
 import {toggleQuestions, update} from "../../actions";
 import {DocumentPicker, DocumentPickerUtil} from "react-native-document-picker"
-import FS from "react-native-fs"
 type Props = {
     navigation: () => void
 };

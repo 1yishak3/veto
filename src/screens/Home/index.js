@@ -5,7 +5,7 @@ import {
     TouchableOpacity,
     Dimensions,
     FlatList,
-    View as RNView
+    AsyncStorage
 } from "react-native";
 import {connect} from "react-redux";
 import {
@@ -22,45 +22,44 @@ import {
     Spinner,
     Card
 } from "native-base";
+import * as firebase from "firebase"
 
 
-
-import {itemsFetchData} from "../../actions";
+import {itemsFetchData, itemsIsLoading, decypher, cypher, setStatus} from "../../actions";
 import Question from "../../components/question"
 import datas from "./data.json";
 
 import styles from "./styles";
 
 const deviceWidth = Dimensions.get("window").width;
+const deviceHeight = Dimensions.get("window").height;
 
 class Home extends Component {
     componentDidMount() {
-        this.props.fetchData([{
-            answered:false,
-            uid:"foobar6",
-            food:"burger"
-        },{
-            answered:false,
-            uid:"foobar66",
-            food:"burger"
-        },{
-            answered:false,
-            uid:"foobar666",
-            food:"burger"
-        },{
-            answered:false,
-            uid:"foobar6666",
-            food:"burger"
-        },{
-            answered:false,
-            uid:"foobar66666",
-            food:"burger"
-        }]);
+        this.props.itemLoading(true)
+        //veto status would be data about initial login
+        //uid
+        //lastin ->this obviously gets updated
+        //loggedIn
+        //poliperson?
+        //fast data->
+                //everything from
+        AsyncStorage.getItem("veto-status").then((data)=>{
+            //data check
+            this.props.setStatus(data)
+            firebase.database().ref("users/"+this.props.decypher(data.uid)+"/")
+        }).catch((error)=>{
+            console.log("Erred: "+ error)
+        })
     }
 
     render() {
         if (this.props.isLoading) {
-            return <Spinner/>;
+            return (
+                <Content style={{alignContent:"center", top:0.5*deviceHeight, }}>
+                    <Spinner/>
+                </Content>
+            )
         } else {
             return (
                 <Container>
@@ -101,13 +100,15 @@ class Home extends Component {
 
 function bindAction(dispatch) {
     return {
-        fetchData: url => dispatch(itemsFetchData(url))
+        fetchedData: data => dispatch(itemsFetchData(data)),
+        itemLoading: bool => dispatch(itemsIsLoading(bool)),
+        setStatus: data => dispatch(setStatus(data)),
     };
 }
 
 const mapStateToProps = state => ({
     questions: state.homeRed.questions,
     hasErrored: state.homeRed.hasErrored,
-    isLoading: state.homeRed.isLoading
+    isLoading: state.homeRed.isLoading,
 });
 export default connect(mapStateToProps, bindAction)(Home);
