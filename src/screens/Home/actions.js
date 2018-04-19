@@ -31,22 +31,31 @@ export function userDataSet(data){
     data:data
   };
 }
-export async function fetchedUserData(data:any){
-  var qs = data.questions;
-  var questions = {};
-  for (var tid in qs){
-    await db.ref("/threads/" + tid).once("value").then((data)=>{
-      questions.push(data);
-    }).catch((err)=>{
-      console.log("Erred: " + err);
-    });
+export function atomFetched(data){
+  return {
+    type:"ATOM_QUESTION",
+    data:data
   }
+}
+export function fetchedUserData(data:any){
+  return (dispatch=>{
+      dispatch(userDataSet(data));
+      var qs = data.questions
+      count=0;
+      for (var tid in qs){
+        db.ref("/threads/" + tid).once("value").then((data)=>{
+           dispatch(atomFetched(data.val()));
+           count++;
+           if(count === Object.keys(qs).length){
+               dispatch(itemsIsLoading(false))
+           }
+        }).catch((err)=>{
+          dispatch(itemsHasErrored(true));
+        });
+
+      }
+  })
   //I don't know about the following line of code
   //while(Object.keys(qs) !== Object.keys(questions));
-
-  return (dispatch =>{
-    dispatch(userDataSet(data));
-    dispatch(itemsFetchData(questions));
-  });
 
 }

@@ -42,6 +42,7 @@ class Home extends Component {
         //loggedIn
         //poliperson?
         //fast data->
+        //TODO: Everything
 
         var uref = db.ref("users/"+this.props.decypher(this.props.huid) + "/")
         uref.once("value").then((data)=>{
@@ -55,7 +56,7 @@ class Home extends Component {
     render() {
         if (this.props.isLoading) {
             return (
-                <Content style={{alignContent:"center", top:0.5*deviceHeight, }}>
+                <Content style={{alignContent:"center", top:0.45*deviceHeight, }}>
                     <Spinner/>
                 </Content>
             )

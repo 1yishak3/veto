@@ -2,7 +2,10 @@ export {
     itemsHasErrored,
     itemsIsLoading,
     itemsFetchDataSuccess,
-    itemsFetchData
+    itemsFetchData,
+    userDataSet,
+    fetchedUserData,
+    atomFetched,
 } from "../screens/Home/actions";
 export {
     update
