@@ -24,10 +24,14 @@ import {Grid, Col,} from "react-native-easy-grid"
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
 
 import styles from "./styles";
+import {getProxPeople, isLoadingAround, isLoadingSearch, searchSuccess, aroundSuccess} from "../../actions"
 
 const headerLogo = require("../../../assets/header-logo.png");
 
 class AddPolipeople extends Component {
+    componentDidMount(){
+        this.props.getProxPeople(this.props.user.details.state)
+    }
     state={
         searchTerm:""
     }
@@ -41,6 +45,7 @@ class AddPolipeople extends Component {
         this.ds=new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
 
     }
+
     render() {
         const navigation = this.props.navigation;
         const dss=this.ds
@@ -136,7 +141,6 @@ class AddPolipeople extends Component {
                             />
                         </View>
                 }
-
             </Container>
         );
     }
@@ -146,7 +150,8 @@ function mapActions(dispatch){
         aroundSuccess:(people:any)=>dispatch(aroundSuccess(people)),
         searchSuccess:(people:any)=>dispatch(searchSuccess(people)),
         isLoadingAround:(bool:Boolean)=>dispatch(isLoadingAround(bool)),
-        isLoadingSearch:(bool:Boolean)=>dispatch(isLoadingSearch(bool))
+        isLoadingSearch:(bool:Boolean)=>dispatch(isLoadingSearch(bool)),
+        getProxPeople:(state:string)=>dispatch(getProxPeople(state))
     }
 }
 const mapStateToProps= (state)=>{

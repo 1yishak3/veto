@@ -44,6 +44,7 @@ import {
 import styles from "./styles";
 import {connect} from "react-redux"
 import {getThread, isLoading, fetchFail} from "../../actions"
+import * as firebase from "firebase"
 
 const deviceWidth = Dimensions.get("window").width;
 
@@ -53,7 +54,8 @@ type Props = {
 class Thread extends Component {
     componentDidMount() {
         //async fetch from Firebase here
-        this.props.getThread({collection:[{colid:"xyz1",answer:true},{colid:"xyz",followup:true}],question:{}})
+        this.props.getThread(this.props.tid)
+
     }
     state = {
         animationType: "slideInDown",
@@ -81,13 +83,6 @@ class Thread extends Component {
             this.setState({...this.state, lines: newLines})
         }
 
-    }
-    modalO() {
-        this.setState({ open: true });
-    }
-
-    modalX() {
-        this.setState({ open: false });
     }
     renderModal=()=>{
 
@@ -297,7 +292,7 @@ class Thread extends Component {
 
                     </Fab>
                 </Container>
-               
+
                 <Modal
                     style={{backgroundColor:"#7413b9"}}
                     animationType="slide"
