@@ -4,6 +4,7 @@ const initialState={
     isLoading:false,
     error:""
 }
+
 export default function(state=initialState, action:Function){
     switch (action.type){
         case("SET_THREAD_PAGE_UP"):

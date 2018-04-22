@@ -56,3 +56,7 @@ veto-backend/
 
 # cache
 react-native-packager-cache-*/
+
+# odt
+*.~lock*
+*.odt

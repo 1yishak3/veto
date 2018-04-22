@@ -1,3 +1,5 @@
+import * as firebase from "firebase"
+db = firebase.database()
 export function setThreadId(uid:string){
     return {
         type:"SET_THREAD_PAGE_UP",
@@ -29,9 +31,14 @@ export function fetchFail(error:any){
     }
 }
 
-export function getThread(thread:Object){
+
+export function getThread(thread:any){
     return dispatch => {
-        dispatch(fetchSuccess(thread))
-        dispatch(isLoading(false))
+        db.ref("/threads/"+thread).once("value").then((data)=>{
+            dispatch(fetchSuccess(data))
+            dispatch(isLoading(false))
+        }).catch((err)=>{
+            dispatch(fetchFail(err))
+        })
     }
 }

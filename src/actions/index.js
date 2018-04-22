@@ -26,8 +26,17 @@ export {
     isLoading
 } from "../screens/Thread/actions"
 export {
-
+    getProxPeople,
+    getAround,
+    aroundSuccess,
+    searchSuccess,
+    failure,
+    aroundFailure,
+    isLoadingAround,
+    isLoadingSearch
 } from "../screens/AddPolipeople/actions"
+
+export {} from "./mainActions"
 
 export function decypher(uid){
     return uid

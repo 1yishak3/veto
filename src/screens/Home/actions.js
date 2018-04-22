@@ -52,7 +52,6 @@ export function fetchedUserData(data:any){
         }).catch((err)=>{
           dispatch(itemsHasErrored(true));
         });
-
       }
   })
   //I don't know about the following line of code

@@ -51,7 +51,7 @@ class Question extends Component {
                     </View>
 
                     <View style={{padding:13}}>
-                        <Text selectable={true} selectionColor={"#d987ff"} >This is a sample text that should be actually a question</Text>
+                        <Text selectable={true} selectionColor={"#d987ff"} >This is a sample text that should actually be a question</Text>
                     </View>
                 </TouchableOpacity>
 
